@@ -33,11 +33,6 @@ class SofarCloud extends utils.Adapter {
         const storeJson = !!this.config.storeJson;
         const storeDir = this.config.storeDir || "";
 
-        // Random delay 0-58s
-        const delay = Math.floor(Math.random() * 58);
-        this.log.debug(`Data retrieval will start in ${delay} seconds`);
-        await this.sleep(delay * 1000);
-
         let client = null;
         if (mqtt_active) {
             if (!broker_address || broker_address === "0.0.0.0") {
@@ -75,7 +70,6 @@ class SofarCloud extends utils.Adapter {
 
             if (mqtt_active && client) {
                 await this.publishSofarData(client, daten);
-                await this.sleep(500);
                 client.end();
             }
 
