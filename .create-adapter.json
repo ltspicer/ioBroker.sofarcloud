@@ -1,0 +1,60 @@
+{
+    "expert": "yes",
+    "cli": false,
+    "adapterName": "sofarcloud",
+    "title": "SofarCloud",
+    "description": "Reads data from the SofarCloud server",
+    "keywords": [
+        "pv",
+        "photovoltaik",
+        "photovoltaic",
+        "inverter",
+        "solar",
+        "wechselrichter"
+    ],
+    "contributors": "",
+    "authorName": "Daniel Luginbühl",
+    "authorGithub": "ltspicer",
+    "authorEmail": "dlu0@sunrise.ch",
+    "icon": {
+        "data": "data:image/jpeg;base64,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",
+        "extension": "jpg"
+    },
+    "features": [
+        "adapter"
+    ],
+    "adminFeatures": [],
+    "type": "energy",
+    "startMode": "schedule",
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "connectionIndicator": "no",
+    "scheduleStartOnChange": "no",
+    "adapterSettings": [
+        {
+            "key": "Use MQTT",
+            "inputType": "checkbox",
+            "defaultValue": true
+        },
+        {
+            "key": "Debug",
+            "inputType": "checkbox",
+            "defaultValue": true
+        }
+    ],
+    "language": "JavaScript",
+    "nodeVersion": "20",
+    "adminUi": "json",
+    "releaseScript": "yes",
+    "indentation": "Space (4)",
+    "quotes": "double",
+    "tools": [
+        "ESLint",
+        "type checking"
+    ],
+    "gitRemoteProtocol": "HTTPS",
+    "license": "MIT License",
+    "dependabot": "yes",
+    "target": "github",
+    "creatorVersion": "2.6.5"
+}
