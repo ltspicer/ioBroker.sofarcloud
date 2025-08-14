@@ -1,167 +1,207 @@
 "use strict";
 
-/*
- * Created with @iobroker/create-adapter v2.6.5
- */
-
-// The adapter-core module gives you access to the core ioBroker functions
-// you need to create an adapter
 const utils = require("@iobroker/adapter-core");
+const axios = require("axios");
+const mqtt = require("mqtt");
+const fs = require("fs");
+const path = require("path");
+const https = require("https");
 
-// Load your modules here, e.g.:
-// const fs = require("fs");
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-class Sofarcloud extends utils.Adapter {
+axios.defaults.timeout = 5000;
 
-    /**
-     * @param {Partial<utils.AdapterOptions>} [options={}]
-     */
+class SofarCloud extends utils.Adapter {
     constructor(options) {
         super({
             ...options,
             name: "sofarcloud",
         });
         this.on("ready", this.onReady.bind(this));
-        this.on("stateChange", this.onStateChange.bind(this));
-        // this.on("objectChange", this.onObjectChange.bind(this));
-        // this.on("message", this.onMessage.bind(this));
         this.on("unload", this.onUnload.bind(this));
     }
 
-    /**
-     * Is called when databases are connected and adapter received configuration.
-     */
     async onReady() {
-        // Initialize your adapter here
+        // Konfiguration aus Adapter-Settings
+        const username = this.config.username || "";
+        const password = this.config.passwort || "";
+        const broker_address = this.config.broker_address || "";
+        const mqtt_active = !!this.config.mqtt_active;
+        const mqtt_user = this.config.mqtt_user || "";
+        const mqtt_pass = this.config.mqtt_pass || "";
+        const mqtt_port = Number(this.config.mqtt_port) || 1883;
+        const storeJson = !!this.config.storeJson;
+        const storeDir = this.config.storeDir || "";
 
-        // The adapters config (in the instance object everything under the attribute "native") is accessible via
-        // this.config:
-        this.log.info("config Use MQTT: " + this.config.Use MQTT);
-        this.log.info("config Debug: " + this.config.Debug);
+        // Random delay 0-58s
+        const delay = Math.floor(Math.random() * 58);
+        this.log.debug(`Data retrieval will start in ${delay} seconds`);
+        await this.sleep(delay * 1000);
 
-        /*
-        For every state in the system there has to be also an object of type state
-        Here a simple template for a boolean variable named "testVariable"
-        Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-        */
-        await this.setObjectNotExistsAsync("testVariable", {
-            type: "state",
-            common: {
-                name: "testVariable",
-                type: "boolean",
-                role: "indicator",
-                read: true,
-                write: true,
-            },
-            native: {},
-        });
+        let client = null;
+        if (mqtt_active) {
+            if (!broker_address || broker_address === "0.0.0.0") {
+                this.log.error("MQTT IP address is empty - please check instance configuration");
+                this.terminate ? this.terminate("MQTT IP address is empty", 0) : process.exit(0);
+                return;
+            }
+            client = mqtt.connect(`mqtt://${broker_address}:${mqtt_port}`, {
+                connectTimeout: 4000,
+                username: mqtt_user,
+                password: mqtt_pass,
+            });
+        }
 
-        // In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
-        this.subscribeStates("testVariable");
-        // You can also add a subscription for multiple states. The following line watches all states starting with "lights."
-        // this.subscribeStates("lights.*");
-        // Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
-        // this.subscribeStates("*");
+        try {
+            const token = await this.loginSofarCloud(username, password);
+            if (!token) {
+                this.log.error("No token received");
+                if (client) client.end();
+                return;
+            }
 
-        /*
-            setState examples
-            you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
-        */
-        // the variable testVariable is set to true as command (ack=false)
-        await this.setStateAsync("testVariable", true);
+            const daten = await this.getSofarStationData(token);
+            if (!daten) {
+                this.log.error("No data received");
+                if (client) client.end();
+                return;
+            }
 
-        // same thing, but the value is flagged "ack"
-        // ack should be always set to true if the value is received from or acknowledged from the target system
-        await this.setStateAsync("testVariable", { val: true, ack: true });
+            if (storeJson) {
+                this.saveJsonFile("sofar_realtime.json", daten, storeDir);
+            }
 
-        // same thing, but the state is deleted after 30s (getState will return null afterwards)
-        await this.setStateAsync("testVariable", { val: true, ack: true, expire: 30 });
+            this.log.debug(JSON.stringify(daten, null, 2));
 
-        // examples for the checkPassword/checkGroup functions
-        let result = await this.checkPasswordAsync("admin", "iobroker");
-        this.log.info("check user admin pw iobroker: " + result);
+            if (mqtt_active && client) {
+                await this.publishSofarData(client, daten);
+                await this.sleep(500);
+                client.end();
+            }
 
-        result = await this.checkGroupAsync("admin", "admin");
-        this.log.info("check group user admin group admin: " + result);
+        } catch (err) {
+            this.log.error("Error in the process: " + err.message);
+        } finally {
+            this.terminate ? this.terminate("Everything done. Going to terminate till next schedule", 0) : process.exit(0);
+        }
     }
 
-    /**
-     * Is called when adapter shuts down - callback has to be called under any circumstances!
-     * @param {() => void} callback
-     */
+    // Login bei SofarCloud
+    async loginSofarCloud(username, password) {
+        const LOGIN_URL = "https://global.sofarcloud.com/api/user/auth/he/login";
+        const headers = {
+            "Content-Type": "application/json",
+            "User-Agent": "okhttp/3.14.9"
+        };
+        const payload = {
+            accountName: username,
+            expireTime: 2592000,
+            password: password
+        };
+        try {
+            const response = await axios.post(LOGIN_URL, payload, { headers, httpsAgent: new https.Agent({ rejectUnauthorized: false }) });
+            this.log.debug(`Status code: ${response.status}`);
+            this.log.debug(`Response: ${JSON.stringify(response.data)}`);
+            if (response.status === 200) {
+                const data = response.data;
+                if (data.code === "0" && data.data && data.data.accessToken) {
+                    this.log.debug("Login successful");
+                    return data.data.accessToken;
+                } else {
+                    this.log.error("Login failed: " + data.message);
+                }
+            } else {
+                this.log.error("Server error");
+            }
+        } catch (e) {
+            this.log.error("Login error: " + e.message);
+        }
+        return null;
+    }
+
+    // Stationen abfragen
+    async getSofarStationData(token) {
+        const systemTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const URL = "https://global.sofarcloud.com/api/";
+        const headers = {
+            "authorization": token,
+            "app-version": "2.3.6",
+            "custom-origin": "sofar",
+            "custom-device-type": "1",
+            "request-from": "app",
+            "scene": "eu",
+            "bundlefrom": "2",
+            "appfrom": "6",
+            "timezone": systemTimeZone,
+            "accept-language": "en",
+            "user-agent": "okhttp/4.9.2",
+            "content-type": "application/json"
+        };
+        try {
+            // Stationen-Liste holen
+            const resp = await axios.post(URL + "device/stationInfo/selectStationListPages", { pageNum: 1, pageSize: 10 }, { headers });
+            this.log.debug("Station list loaded");
+            const stations = resp.data.data.rows;
+            const allRealtime = [];
+            for (const station of stations) {
+                const station_id = station.id;
+                const url_detail = `${URL}device/stationInfo/selectStationDetail?stationId=${station_id}`;
+                const resp_detail = await axios.post(url_detail, {}, { headers });
+                if (resp_detail.data && resp_detail.data.data && resp_detail.data.data.stationRealTimeVo) {
+                    allRealtime.push(resp_detail.data.data.stationRealTimeVo);
+                }
+            }
+            return allRealtime;
+        } catch (e) {
+            this.log.error("Error retrieving stations: " + e.message);
+            return null;
+        }
+    }
+
+    // MQTT Publish
+    async sendMqttSofar(client, topic, value, station_id) {
+        if (client) {
+            const payload = value == null ? "" : value.toString();
+            client.publish(`SofarCloud/${station_id}/${topic}`, payload, { qos: 0, retain: true });
+        }
+    }
+
+    // JSON speichern
+    saveJsonFile(filename, data, dir = "") {
+        try {
+            const filePath = path.join(dir || __dirname, filename);
+            fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
+            this.log.debug(`JSON gespeichert: ${filePath}`);
+        } catch (e) {
+            this.log.error("Error saving JSON: " + e.message);
+        }
+    }
+
+    // Daten durchlaufen und publishen
+    async publishSofarData(client, daten) {
+        for (let idx = 0; idx < daten.length; idx++) {
+            const station = daten[idx];
+            const station_id = station.id || `station${idx}`;
+            for (const [key, value] of Object.entries(station)) {
+                if (!key.toLowerCase().endsWith("unit")) {
+                    await this.sendMqttSofar(client, key, value, station_id);
+                }
+            }
+        }
+    }
+
     onUnload(callback) {
         try {
-            // Here you must clear all timeouts or intervals that may still be active
-            // clearTimeout(timeout1);
-            // clearTimeout(timeout2);
-            // ...
-            // clearInterval(interval1);
-
             callback();
-        } catch (e) {
+        } catch {
             callback();
         }
     }
-
-    // If you need to react to object changes, uncomment the following block and the corresponding line in the constructor.
-    // You also need to subscribe to the objects with `this.subscribeObjects`, similar to `this.subscribeStates`.
-    // /**
-    //  * Is called if a subscribed object changes
-    //  * @param {string} id
-    //  * @param {ioBroker.Object | null | undefined} obj
-    //  */
-    // onObjectChange(id, obj) {
-    //     if (obj) {
-    //         // The object was changed
-    //         this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
-    //     } else {
-    //         // The object was deleted
-    //         this.log.info(`object ${id} deleted`);
-    //     }
-    // }
-
-    /**
-     * Is called if a subscribed state changes
-     * @param {string} id
-     * @param {ioBroker.State | null | undefined} state
-     */
-    onStateChange(id, state) {
-        if (state) {
-            // The state was changed
-            this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-        } else {
-            // The state was deleted
-            this.log.info(`state ${id} deleted`);
-        }
-    }
-
-    // If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
-    // /**
-    //  * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...
-    //  * Using this method requires "common.messagebox" property to be set to true in io-package.json
-    //  * @param {ioBroker.Message} obj
-    //  */
-    // onMessage(obj) {
-    //     if (typeof obj === "object" && obj.message) {
-    //         if (obj.command === "send") {
-    //             // e.g. send email or pushover or whatever
-    //             this.log.info("send command");
-
-    //             // Send response in callback if required
-    //             if (obj.callback) this.sendTo(obj.from, obj.command, "Message received", obj.callback);
-    //         }
-    //     }
-    // }
-
 }
 
 if (require.main !== module) {
-    // Export the constructor in compact mode
-    /**
-     * @param {Partial<utils.AdapterOptions>} [options={}]
-     */
-    module.exports = (options) => new Sofarcloud(options);
+    module.exports = options => new SofarCloud(options);
 } else {
-    // otherwise start the instance directly
-    new Sofarcloud();
+    new SofarCloud();
 }
+

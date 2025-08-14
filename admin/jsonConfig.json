@@ -1,16 +1,96 @@
 {
-    "i18n": true,
-    "type": "panel",
-    "items": {
-        "Use MQTT": {
-            "type": "checkbox",
-            "label": "Use MQTT",
-            "newLine": true
-        },
-        "Debug": {
-            "type": "checkbox",
-            "label": "Debug",
-            "newLine": true
-        }
+  "i18n": true,
+  "type": "panel",
+  "items": {
+    "username": {
+      "type": "text",
+      "label": "SofarCloud username (email)",
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "passwort": {
+      "type": "text",
+      "label": "SofarCloud password",
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "mqtt_active": {
+      "type": "checkbox",
+      "label": "Use MQTT",
+      "default": false,
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "broker_address": {
+      "type": "text",
+      "label": "MQTT broker IP address",
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "mqtt_port": {
+      "type": "number",
+      "label": "MQTT port",
+      "default": 1883,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "mqtt_user": {
+      "type": "text",
+      "label": "MQTT user",
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "mqtt_pass": {
+      "type": "text",
+      "label": "MQTT password",
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "storeJson": {
+      "type": "checkbox",
+      "label": "Save Json file",
+      "default": false,
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "storeDir": {
+      "type": "text",
+      "label": "Folder for JSON file",
+      "default": "/home/pi",
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
     }
+  }
 }
