@@ -120,7 +120,7 @@ class SofarCloud extends utils.Adapter {
         return null;
     }
 
-    // Stationen abfragen
+    // Stationen (Inverter) abfragen
     async getSofarStationData(token) {
         const systemTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
         const URL = "https://global.sofarcloud.com/api/";
@@ -159,7 +159,7 @@ class SofarCloud extends utils.Adapter {
         }
     }
 
-    // Datenpunkte für eine Station anlegen/aktualisieren
+    // Datenpunkte für eine Station (Inverter) anlegen/aktualisieren
     async createOrUpdateStationDPs(station, idx) {
         if (!station) return;
 
@@ -173,7 +173,7 @@ class SofarCloud extends utils.Adapter {
 
         // Für jedes Feld im station-Objekt einen State anlegen
         for (const [key, value] of Object.entries(station)) {
-            // Optional: bestimmte Felder überspringen
+            // Bestimmte Felder überspringen
             if (typeof value === "object" || key.toLowerCase().endsWith("unit")) continue;
 
             // Einheit suchen, falls vorhanden
@@ -210,7 +210,7 @@ class SofarCloud extends utils.Adapter {
         try {
             const filePath = path.join(dir || __dirname, filename);
             fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
-            this.log.debug(`JSON gespeichert: ${filePath}`);
+            this.log.debug(`JSON saved: ${filePath}`);
         } catch (e) {
             this.log.error("Error saving JSON: " + e.message);
         }
@@ -227,6 +227,7 @@ class SofarCloud extends utils.Adapter {
                 }
             }
         }
+        this.log.debug("MQTT data sent");
     }
 
     onUnload(callback) {
