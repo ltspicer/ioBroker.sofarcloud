@@ -1,4 +1,3 @@
-import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -13,41 +12,47 @@ const compat = new FlatCompat({
     allConfig: js.configs.all
 });
 
-export default defineConfig([globalIgnores(["**/.eslintrc.js", "admin/words.js"]), {
-    extends: compat.extends("eslint:recommended"),
-    plugins: {},
+export default [
+    {
+        ignores: ["**/.eslintrc.js", "admin/words.js"],
+    },
+    {
+        extends: compat.extends("eslint:recommended"),
+        plugins: {},
 
-    languageOptions: {
-        globals: {
-            ...globals.node,
-            ...globals.mocha,
+        languageOptions: {
+            globals: {
+                ...globals.node,
+                ...globals.mocha,
+            },
+
+            ecmaVersion: "latest",
+            sourceType: "commonjs",
         },
 
-        ecmaVersion: "latest",
-        sourceType: "commonjs",
-    },
+        rules: {
+            indent: ["error", 4, {
+                SwitchCase: 1,
+            }],
 
-    rules: {
-        indent: ["error", 4, {
-            SwitchCase: 1,
-        }],
+            "no-console": "off",
 
-        "no-console": "off",
+            "no-unused-vars": ["error", {
+                ignoreRestSiblings: true,
+                argsIgnorePattern: "^_",
+            }],
 
-        "no-unused-vars": ["error", {
-            ignoreRestSiblings: true,
-            argsIgnorePattern: "^_",
-        }],
+            "no-var": "error",
+            "no-trailing-spaces": "error",
+            "prefer-const": "error",
 
-        "no-var": "error",
-        "no-trailing-spaces": "error",
-        "prefer-const": "error",
+            quotes: ["error", "double", {
+                avoidEscape: true,
+                allowTemplateLiterals: true,
+            }],
 
-        quotes: ["error", "double", {
-            avoidEscape: true,
-            allowTemplateLiterals: true,
-        }],
+            semi: ["error", "always"],
+        },
+    }
+];
 
-        semi: ["error", "always"],
-    },
-}]);
