@@ -66,6 +66,7 @@
         "loglevel": "info",
         "tier": 3,
         "mode": "schedule",
+        "schedule": "*/5 * * * *",
         "type": "energy",
         "compact": true,
         "connectionType": "cloud",

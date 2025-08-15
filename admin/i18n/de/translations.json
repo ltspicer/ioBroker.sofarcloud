@@ -1,5 +1,12 @@
 {
     "sofarcloud adapter settings": "Adaptereinstellungen für sofarcloud",
-    "Use MQTT": "Use MQTT",
-    "Debug": "Debug"
+    "username": "SofarCloud Username (Email)",
+    "passwort": "SofarCoud Passwort",
+    "mqtt_active": "MQTT benutzen",
+    "broker_address": "MQTT Broker IP Adresse",
+    "mqtt_user": "MQTT User",
+    "mqtt_pass": "MQTT Passwort",
+    "mqtt_port": "MQTT Port",
+    "storeJson": "Json speichern",
+    "storeDir": "Verz. für Json Datei"
 }
