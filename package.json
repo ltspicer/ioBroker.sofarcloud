@@ -14,7 +14,8 @@
     "photovoltaic",
     "inverter",
     "solar",
-    "wechselrichter"
+    "wechselrichter",
+    "ioBroker"
   ],
   "repository": {
     "type": "git",
