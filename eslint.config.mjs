@@ -16,41 +16,26 @@ export default [
     {
         ignores: ["**/.eslintrc.js", "admin/words.js"],
     },
+    // Hier die "extends"-Configs direkt einfügen:
+    ...compat.extends("eslint:recommended"),
     {
-        extends: compat.extends("eslint:recommended"),
         plugins: {},
-
         languageOptions: {
             globals: {
                 ...globals.node,
                 ...globals.mocha,
             },
-
             ecmaVersion: "latest",
             sourceType: "commonjs",
         },
-
         rules: {
-            indent: ["error", 4, {
-                SwitchCase: 1,
-            }],
-
+            indent: ["error", 4, { SwitchCase: 1 }],
             "no-console": "off",
-
-            "no-unused-vars": ["error", {
-                ignoreRestSiblings: true,
-                argsIgnorePattern: "^_",
-            }],
-
+            "no-unused-vars": ["error", { ignoreRestSiblings: true, argsIgnorePattern: "^_" }],
             "no-var": "error",
             "no-trailing-spaces": "error",
             "prefer-const": "error",
-
-            quotes: ["error", "double", {
-                avoidEscape: true,
-                allowTemplateLiterals: true,
-            }],
-
+            quotes: ["error", "double", { avoidEscape: true, allowTemplateLiterals: true }],
             semi: ["error", "always"],
         },
     }
