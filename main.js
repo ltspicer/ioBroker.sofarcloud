@@ -62,6 +62,13 @@ class SofarCloud extends utils.Adapter {
                 return;
             }
 
+            // Datenpunkte für alle Stationen anlegen/aktualisieren
+            if (Array.isArray(daten)) {
+                for (let i = 0; i < daten.length; i++) {
+                    await this.createOrUpdateStationDPs(daten[i], i);
+                }
+            }
+
             if (storeJson) {
                 this.saveJsonFile("sofar_realtime.json", daten, storeDir);
             }
@@ -149,6 +156,44 @@ class SofarCloud extends utils.Adapter {
         } catch (e) {
             this.log.error("Error retrieving stations: " + e.message);
             return null;
+        }
+    }
+
+    // Datenpunkte für eine Station anlegen/aktualisieren
+    async createOrUpdateStationDPs(station, idx) {
+        if (!station) return;
+
+        const channelId = `${station.id || idx}`;
+        // Lege einen Channel für die Station an
+        await this.setObjectNotExistsAsync(channelId, {
+            type: "channel",
+            common: { name: station.name || channelId },
+            native: {},
+        });
+
+        // Für jedes Feld im station-Objekt einen State anlegen
+        for (const [key, value] of Object.entries(station)) {
+            // Optional: bestimmte Felder überspringen
+            if (typeof value === "object" || key.toLowerCase().endsWith("unit")) continue;
+
+            // Einheit suchen, falls vorhanden
+            const unitKey = key + "Unit";
+            const unit = station[unitKey] || "";
+
+            const id = `${channelId}.${key}`;
+            await this.setObjectNotExistsAsync(id, {
+                type: "state",
+                common: {
+                    name: key,
+                    type: typeof value,
+                    role: "value",
+                    unit: unit,
+                    read: true,
+                    write: false,
+                },
+                native: {},
+            });
+            await this.setStateAsync(id, { val: value, ack: true });
         }
     }
 
