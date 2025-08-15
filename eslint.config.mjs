@@ -1,11 +1,10 @@
-// eslint.config.js
-const globals = require("globals");
-const path = require("node:path");
-const { fileURLToPath } = require("node:url");
-const js = require("@eslint/js");
-const { FlatCompat } = require("@eslint/eslintrc");
+import globals from "globals";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import js from "@eslint/js";
+import { FlatCompat } from "@eslint/eslintrc";
 
-const __filename = fileURLToPath(__filename);
+const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({
     baseDirectory: __dirname,
@@ -13,7 +12,7 @@ const compat = new FlatCompat({
     allConfig: js.configs.all
 });
 
-module.exports = [
+export default [
     {
         ignores: ["**/.eslintrc.js", "admin/words.js"],
     },
