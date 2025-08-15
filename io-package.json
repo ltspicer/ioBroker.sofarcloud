@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "news": {
+      "1.0.1": {
+        "en": "Div dependencies",
+        "de": "Diverse Abhängigkeiten",
+        "ru": "Div зависимости",
+        "pt": "Dependências de Div",
+        "nl": "Afhankelijkheden",
+        "fr": "Dépendances",
+        "it": "Div dipendenze",
+        "es": "Dependencias de Div",
+        "pl": "Zależności div",
+        "uk": "Дивні залежності",
+        "zh-cn": "Div 依赖关系"
+      },
       "1.0.0": {
         "en": "Initial release",
         "de": "Erstausstrahlung",
