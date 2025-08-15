@@ -8,6 +8,7 @@
   },
   "homepage": "https://github.com/ltspicer/ioBroker.sofarcloud",
   "license": "MIT",
+  "type": "module",
   "keywords": [
     "pv",
     "photovoltaik",
