@@ -35,6 +35,7 @@
     "broker_address": {
       "type": "text",
       "label": "MQTT broker IP address",
+      "default": "127.0.0.1",
       "newLine": true,
       "xs": 12,
       "sm": 12,
@@ -85,7 +86,7 @@
     "storeDir": {
       "type": "text",
       "label": "Folder for JSON file",
-      "default": "/home/pi",
+      "default": "/home/iobroker",
       "xs": 12,
       "sm": 12,
       "md": 6,

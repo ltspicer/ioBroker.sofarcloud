@@ -27,6 +27,10 @@ The received data can also be saved as JSON (sofar_realtime.json).
 
 ## Changelog
 
+### **WORK IN PROGRESS**
+
+- Div dependencies
+
 ### 1.0.0 (2025-08-15)
 - Initial release
 
