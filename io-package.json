@@ -1,94 +1,107 @@
 {
-    "common": {
-        "name": "sofarcloud",
-        "version": "0.0.1",
-        "news": {
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "uk": "Початкова версія",
-                "zh-cn": "首次出版"
-            }
-        },
-        "titleLang": {
-            "en": "SofarCloud",
-            "de": "SofarCloud",
-            "ru": "SofarCloud",
-            "pt": "SofarCloud",
-            "nl": "SofarCloud",
-            "fr": "SofarCloud",
-            "it": "SofarCloud",
-            "es": "SofarCloud",
-            "pl": "SofarCloud",
-            "uk": "SofarCloud",
-            "zh-cn": "SofarCloud"
-        },
-        "desc": {
-            "en": "Reads data from the SofarCloud server",
-            "de": "Reads data from the SofarCloud server",
-            "ru": "Reads data from the SofarCloud server",
-            "pt": "Reads data from the SofarCloud server",
-            "nl": "Reads data from the SofarCloud server",
-            "fr": "Reads data from the SofarCloud server",
-            "it": "Reads data from the SofarCloud server",
-            "es": "Reads data from the SofarCloud server",
-            "pl": "Reads data from the SofarCloud server",
-            "uk": "Reads data from the SofarCloud server",
-            "zh-cn": "Reads data from the SofarCloud server"
-        },
-        "authors": [
-            "Daniel Luginbühl <dlu0@sunrise.ch>"
-        ],
-        "keywords": [
-            "pv",
-            "photovoltaik",
-            "photovoltaic",
-            "inverter",
-            "solar",
-            "wechselrichter"
-        ],
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "platform": "Javascript/Node.js",
-        "icon": "sofarcloud.jpg",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/ltspicer/ioBroker.sofarcloud/main/admin/sofarcloud.jpg",
-        "readme": "https://github.com/ltspicer/ioBroker.sofarcloud/blob/main/README.md",
-        "loglevel": "info",
-        "tier": 3,
-        "mode": "schedule",
-        "schedule": "*/5 * * * *",
-        "type": "energy",
-        "compact": true,
-        "connectionType": "cloud",
-        "dataSource": "poll",
-        "adminUI": {
-            "config": "json"
-        },
-        "dependencies": [
-            {
-                "js-controller": ">=6.0.11"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=7.4.10"
-            }
-        ]
+  "common": {
+    "name": "sofarcloud",
+    "version": "1.0.0",
+    "news": {
+      "1.0.0": {
+        "en": "Initial release",
+        "de": "Erstausstrahlung",
+        "ru": "Первоначальное освобождение",
+        "pt": "Lançamento inicial",
+        "nl": "Eerste vrijgave",
+        "fr": "Libération initiale",
+        "it": "Rilascio iniziale",
+        "es": "Liberación inicial",
+        "pl": "Początkowe wydanie",
+        "uk": "Початковий реліз",
+        "zh-cn": "初步释放"
+      },
+      "0.0.1": {
+        "en": "initial release",
+        "de": "Erstveröffentlichung",
+        "ru": "Начальная версия",
+        "pt": "lançamento inicial",
+        "nl": "Eerste uitgave",
+        "fr": "Première version",
+        "it": "Versione iniziale",
+        "es": "Versión inicial",
+        "pl": "Pierwsze wydanie",
+        "uk": "Початкова версія",
+        "zh-cn": "首次出版"
+      }
     },
-    "native": {
-        "Use MQTT": true,
-        "Debug": true
+    "titleLang": {
+      "en": "SofarCloud",
+      "de": "SofarCloud",
+      "ru": "SofarCloud",
+      "pt": "SofarCloud",
+      "nl": "SofarCloud",
+      "fr": "SofarCloud",
+      "it": "SofarCloud",
+      "es": "SofarCloud",
+      "pl": "SofarCloud",
+      "uk": "SofarCloud",
+      "zh-cn": "SofarCloud"
     },
-    "objects": [],
-    "instanceObjects": []
+    "desc": {
+      "en": "Reads data from the SofarCloud server",
+      "de": "Reads data from the SofarCloud server",
+      "ru": "Reads data from the SofarCloud server",
+      "pt": "Reads data from the SofarCloud server",
+      "nl": "Reads data from the SofarCloud server",
+      "fr": "Reads data from the SofarCloud server",
+      "it": "Reads data from the SofarCloud server",
+      "es": "Reads data from the SofarCloud server",
+      "pl": "Reads data from the SofarCloud server",
+      "uk": "Reads data from the SofarCloud server",
+      "zh-cn": "Reads data from the SofarCloud server"
+    },
+    "authors": [
+      "Daniel Luginbühl <dlu0@sunrise.ch>"
+    ],
+    "keywords": [
+      "pv",
+      "photovoltaik",
+      "photovoltaic",
+      "inverter",
+      "solar",
+      "wechselrichter"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "icon": "sofarcloud.jpg",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/ltspicer/ioBroker.sofarcloud/main/admin/sofarcloud.jpg",
+    "readme": "https://github.com/ltspicer/ioBroker.sofarcloud/blob/main/README.md",
+    "loglevel": "info",
+    "tier": 3,
+    "mode": "schedule",
+    "schedule": "*/5 * * * *",
+    "type": "energy",
+    "compact": true,
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "adminUI": {
+      "config": "json"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=7.4.10"
+      }
+    ]
+  },
+  "native": {
+    "Use MQTT": true,
+    "Debug": true
+  },
+  "objects": [],
+  "instanceObjects": []
 }

@@ -16,11 +16,8 @@ Reads data from the SofarCloud server
 
 
 ## Changelog
-
-
-### **WORK IN PROGRESS**
+### 1.0.0 (2025-08-15)
 - Initial release
-
 
 ## License
 MIT License
