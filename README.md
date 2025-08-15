@@ -12,10 +12,21 @@
 
 ## sofarcloud adapter for ioBroker
 
-Reads data from the SofarCloud server
+Reads data from the SofarCloud server.
+
+The SofarCloud server stores data from Sofar inverters.
+
+First, install the app (https://de.sofarsolar.com/cloud.html) and register.
+
+You must then enter your login details in the adapter (email & password).
+
+The data can be sent to another system via MQTT if desired.
+
+The received data can also be saved as JSON (sofar_realtime.json).
 
 
 ## Changelog
+
 ### 1.0.0 (2025-08-15)
 - Initial release
 
