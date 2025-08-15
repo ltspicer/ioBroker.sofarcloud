@@ -15,32 +15,6 @@
         "pl": "Zależności div",
         "uk": "Дивні залежності",
         "zh-cn": "Div 依赖关系"
-      },
-      "1.0.0": {
-        "en": "Initial release",
-        "de": "Erstausstrahlung",
-        "ru": "Первоначальное освобождение",
-        "pt": "Lançamento inicial",
-        "nl": "Eerste vrijgave",
-        "fr": "Libération initiale",
-        "it": "Rilascio iniziale",
-        "es": "Liberación inicial",
-        "pl": "Początkowe wydanie",
-        "uk": "Початковий реліз",
-        "zh-cn": "初步释放"
-      },
-      "0.0.1": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung",
-        "ru": "Начальная версия",
-        "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "uk": "Початкова версія",
-        "zh-cn": "首次出版"
       }
     },
     "titleLang": {
