@@ -7,6 +7,8 @@ export default [
     {
         // specify files to exclude from linting here
         ignores: [
+            '**/.eslintrc.js',
+            'admin/words.js',
             '.dev-server/',
             '.vscode/',
             '*.test.js',
