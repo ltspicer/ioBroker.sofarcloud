@@ -12,7 +12,7 @@
 
 ## sofarcloud adapter for ioBroker
 
-Reads data from the SofarCloud server.
+This adapter reads the data from the SofarCloud server and stores it in the data point sofarcloud.
 
 The SofarCloud server stores data from Sofar inverters.
 

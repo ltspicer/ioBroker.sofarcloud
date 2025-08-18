@@ -1,4 +1,4 @@
-Dieser Adapter liest die Daten vom SofarCloud-Server.
+Dieser Adapter liest die Daten vom SofarCloud-Server und sie im Datenpunkt sofarcloud.
 
 Der SofarCloud Server speichert die Daten von Sofar Wechselrichtern.
 
