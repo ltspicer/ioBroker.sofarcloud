@@ -8,7 +8,6 @@ const path = require("path");
 const https = require("https");
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
 axios.defaults.timeout = 5000;
 
 class SofarCloud extends utils.Adapter {
@@ -19,6 +18,11 @@ class SofarCloud extends utils.Adapter {
     });
     this.on("ready", this.onReady.bind(this));
     this.on("unload", this.onUnload.bind(this));
+  }
+
+  // Delay-Helferfunktion
+  delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   async onReady() {
@@ -32,6 +36,11 @@ class SofarCloud extends utils.Adapter {
     const mqtt_port = Number(this.config.mqtt_port) || 1883;
     const storeJson = !!this.config.storeJson;
     const storeDir = this.config.storeDir || "";
+
+    // Delay 0-57s
+    const startupDelay = Math.floor(Math.random() * 58) * 1000;
+    this.log.debug(`Start cloud query after ${startupDelay / 1000} Seconds...`);
+    await this.delay(startupDelay);
 
     let client = null;
     if (mqtt_active) {
