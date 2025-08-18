@@ -2,7 +2,7 @@ Dieser Adapter liest die Daten vom SofarCloud-Server und sie im Datenpunkt sofar
 
 Der SofarCloud Server speichert die Daten von Sofar Wechselrichtern.
 
-Als Erstes, installiere die App ( https://de.sofarsolar.com/cloud.html ) und registriere dich.
+Als Erstes, installiere die App ( https://de.sofarsolar.com/cloud.html ) und registriere Deinen Sofar Wechselrichter.
 
 Die Logindaten musst du dann im Adapter eintragen (Email & Passwort).
 

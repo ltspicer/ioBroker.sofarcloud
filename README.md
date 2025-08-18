@@ -16,7 +16,7 @@ This adapter reads the data from the SofarCloud server and stores it in the data
 
 The SofarCloud server stores data from Sofar inverters.
 
-First, install the app (https://de.sofarsolar.com/cloud.html) and register.
+First, install the app ( https://de.sofarsolar.com/cloud.html ) and register your Sofar inverter.
 
 You must then enter your login details in the adapter (email & password).
 
