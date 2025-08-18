@@ -1,6 +1,6 @@
 {
   "name": "iobroker.sofarcloud",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Reads data from the SofarCloud server",
   "author": {
     "name": "Daniel Luginbühl",

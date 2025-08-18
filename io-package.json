@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "news": {
+      "1.0.2": {
+        "en": "Delay 0-57s added",
+        "de": "Verzögerung 0-57s hinzugefügt",
+        "ru": "Добавлена задержка 0-57",
+        "pt": "Atraso 0-57s adicionado",
+        "nl": "Vertraging 0-57s toegevoegd",
+        "fr": "Délai 0-57s ajoutés",
+        "it": "Ritardo 0-57s aggiunto",
+        "es": "Demora 0-57s añadidos",
+        "pl": "Dodano opóźnienie 0- 57s",
+        "uk": "Додано Delay 0-57s",
+        "zh-cn": "延迟 0-57s 添加"
+      },
       "1.0.1": {
         "en": "Div dependencies",
         "de": "Diverse Abhängigkeiten",
