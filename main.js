@@ -18,11 +18,18 @@ class SofarCloud extends utils.Adapter {
     });
     this.on("ready", this.onReady.bind(this));
     this.on("unload", this.onUnload.bind(this));
+    this._timeouts = new Set();
   }
 
   // Delay-Helferfunktion
   delay(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+    return new Promise((resolve) => {
+      const t = setTimeout(() => {
+        this._timeouts.delete(t);
+        resolve();
+      }, ms);
+      this._timeouts.add(t);
+    });
   }
 
   async onReady() {
@@ -270,6 +277,10 @@ class SofarCloud extends utils.Adapter {
 
   onUnload(callback) {
     try {
+      for (const t of this._timeouts) {
+        clearTimeout(t);
+      }
+      this._timeouts.clear();
       callback();
     } catch {
       callback();
