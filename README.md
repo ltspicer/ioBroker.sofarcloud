@@ -26,6 +26,11 @@ The received data can also be saved as JSON (sofar_realtime.json).
 
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- Type & Role set more precisely
+
 ### 1.0.2 (2025-08-18)
 
 - Delay 0-57s added
