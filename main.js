@@ -7,7 +7,6 @@ const fs = require("fs");
 const path = require("path");
 const https = require("https");
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 axios.defaults.timeout = 5000;
 
 class SofarCloud extends utils.Adapter {
