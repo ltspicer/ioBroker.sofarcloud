@@ -45,16 +45,16 @@
     },
     "desc": {
       "en": "Reads data from the SofarCloud server",
-      "de": "Reads data from the SofarCloud server",
-      "ru": "Reads data from the SofarCloud server",
-      "pt": "Reads data from the SofarCloud server",
-      "nl": "Reads data from the SofarCloud server",
-      "fr": "Reads data from the SofarCloud server",
-      "it": "Reads data from the SofarCloud server",
-      "es": "Reads data from the SofarCloud server",
-      "pl": "Reads data from the SofarCloud server",
-      "uk": "Reads data from the SofarCloud server",
-      "zh-cn": "Reads data from the SofarCloud server"
+      "de": "Lies Daten vom SofarCloud Server",
+      "ru": "Считывает данные с сервера SofarCloud",
+      "pt": "Lê dados do servidor SofarCloud",
+      "nl": "Leest gegevens van de SofarCloud-server",
+      "fr": "Lit les données du serveur SofarCloud",
+      "it": "Legge i dati dal server SofarCloud",
+      "es": "Lea datos del servidor SofarCloud",
+      "pl": "Czyta dane z serwera SofarCloud",
+      "uk": "Читає дані з сервера SofarCloud",
+      "zh-cn": "从 SfarCloud 服务器读取数据"
     },
     "authors": [
       "Daniel Luginbühl <dlu0@sunrise.ch>"
