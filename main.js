@@ -13,7 +13,7 @@ function name2id(pName) {
   return (pName || "").replace(utils.FORBIDDEN_CHARS, "_");
 }
 
-function getRole(data) {
+function getRole(data, key) {
   let roleType = null;
   switch (typeof data) {
     case "number":
@@ -41,6 +41,15 @@ function getRole(data) {
       }
       break;
   }
+
+  if (!isNaN(data)) {
+    roleType = "value";
+  }
+
+  if (key.endsWith("Flag")) {
+    roleType = "indicator";
+  }
+
   return roleType;
 }
 
@@ -262,14 +271,17 @@ class SofarCloud extends utils.Adapter {
         common: {
           name: key,
           type: typeof value,
-          role: getRole(value),
+          role: getRole(value, key),
           unit: unit,
           read: true,
           write: false,
         },
         native: {},
       });
-      //this.log.debug(key + " " + getRole(value)+ " " + typeof value);
+      //this.log.debug(
+      //  `${key} role=${getRole(value, key)} typeof=${typeof value}`,
+      //);
+
       await this.setStateAsync(id, { val: value, ack: true });
     }
   }
