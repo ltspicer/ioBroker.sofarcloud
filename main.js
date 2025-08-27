@@ -15,6 +15,7 @@ function name2id(pName) {
 
 function getRole(data, key) {
   let roleType = null;
+  let typus = typeof data;
   switch (typeof data) {
     case "number":
     case "bigint":
@@ -44,13 +45,15 @@ function getRole(data, key) {
 
   if (!isNaN(data)) {
     roleType = "value";
+    typus = "number";
   }
 
   if (key.endsWith("Flag")) {
     roleType = "indicator";
+    typus = "boolean";
   }
 
-  return roleType;
+  return [roleType, typus];
 }
 
 class SofarCloud extends utils.Adapter {
@@ -266,12 +269,13 @@ class SofarCloud extends utils.Adapter {
       const unit = station[unitKey] || "";
 
       const id = `${channelId}.${key}`;
+      const [roleType, typus] = getRole(value, key);
       await this.setObjectNotExistsAsync(id, {
         type: "state",
         common: {
           name: key,
-          type: typeof value,
-          role: getRole(value, key),
+          type: typus,
+          role: roleType,
           unit: unit,
           read: true,
           write: false,
@@ -279,7 +283,7 @@ class SofarCloud extends utils.Adapter {
         native: {},
       });
       //this.log.debug(
-      //  `${key} role=${getRole(value, key)} typeof=${typeof value}`,
+      //  `${key} role=${getRole(value, key)} typeof=${typeof value} type=${typus}`,
       //);
 
       await this.setStateAsync(id, { val: value, ack: true });
