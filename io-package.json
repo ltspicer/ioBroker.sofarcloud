@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "1.0.2",
+    "version": "2.0.0",
     "news": {
+      "2.0.0": {
+        "en": "Type & Role set more precisely",
+        "de": "Type & Role Set genauer",
+        "ru": "Тип и роль устанавливаются более точно",
+        "pt": "Tipo & conjunto de funções mais precisamente",
+        "nl": "Type & rol nauwkeuriger instellen",
+        "fr": "Type & Rôle défini plus précisément",
+        "it": "Set Type & Role più precisamente",
+        "es": "Tipo & Role set más precisamente",
+        "pl": "Type & Role zestaw bardziej precyzyjny",
+        "uk": "Тип та роль встановлюються більш точно",
+        "zh-cn": "类型和角色设置更精确( L)"
+      },
       "1.0.2": {
         "en": "Delay 0-57s added",
         "de": "Verzögerung 0-57s hinzugefügt",
