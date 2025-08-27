@@ -48,7 +48,7 @@ function getRole(data, key) {
     typus = "number";
   }
 
-  if (key.endsWith("Flag")) {
+  if (key.endsWith("Flag") || key.endsWith("IsNull")) {
     roleType = "indicator";
     typus = "boolean";
   }
