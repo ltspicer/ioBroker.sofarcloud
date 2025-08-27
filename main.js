@@ -9,6 +9,41 @@ const https = require("https");
 
 axios.defaults.timeout = 5000;
 
+function name2id(pName) {
+  return (pName || "").replace(utils.FORBIDDEN_CHARS, "_");
+}
+
+function getRole(data) {
+  let roleType = null;
+  switch (typeof data) {
+    case "number":
+    case "bigint":
+      {
+        roleType = "value";
+      }
+      break;
+    case "boolean":
+      {
+        roleType = "indicator";
+      }
+      break;
+    case "string":
+      {
+        roleType = "text";
+      }
+      break;
+    case "symbol":
+    case "undefined":
+    case "object":
+    case "function":
+      {
+        roleType = null;
+      }
+      break;
+  }
+  return roleType;
+}
+
 class SofarCloud extends utils.Adapter {
   constructor(options) {
     super({
@@ -178,7 +213,7 @@ class SofarCloud extends utils.Adapter {
       const stations = resp.data.data.rows;
       const allRealtime = [];
       for (const station of stations) {
-        const station_id = station.id;
+        const station_id = name2id(station.id);
         const url_detail = `${URL}device/stationInfo/selectStationDetail?stationId=${station_id}`;
         const resp_detail = await axios.post(url_detail, {}, { headers });
         if (
@@ -227,13 +262,14 @@ class SofarCloud extends utils.Adapter {
         common: {
           name: key,
           type: typeof value,
-          role: "value",
+          role: getRole(value),
           unit: unit,
           read: true,
           write: false,
         },
         native: {},
       });
+      //this.log.debug(key + " " + getRole(value)+ " " + typeof value);
       await this.setStateAsync(id, { val: value, ack: true });
     }
   }
