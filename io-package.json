@@ -123,15 +123,11 @@
     "storeDir": "/home/iobroker"
   },
   "protectedNative": [
-    "passwort"
-  ],
-  "encryptedNative": [
-    "passwort"
-  ],
-  "protectedNative": [
+    "passwort",
     "mqtt_pass"
   ],
   "encryptedNative": [
+    "passwort",
     "mqtt_pass"
   ],
   "objects": [],
