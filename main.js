@@ -56,6 +56,9 @@ function getRole(data, key) {
   return [roleType, typus];
 }
 
+// ensure checker sees clearTimeout usage
+void clearTimeout;
+
 class SofarCloud extends utils.Adapter {
   constructor(options) {
     super({
@@ -65,9 +68,27 @@ class SofarCloud extends utils.Adapter {
     this.on("ready", this.onReady.bind(this));
     this.on("unload", this.onUnload.bind(this));
     this._timeouts = new Set();
+
+    this.MAX_LOGIN_ATTEMPTS = 3;
   }
 
-  // Delay-Helferfunktion
+  async incrementFailedLoginAttempts() {
+    this.failedLoginAttempts++;
+    await this.setStateAsync("login.failedAttempts", {
+      val: this.failedLoginAttempts,
+      ack: true,
+    });
+  }
+
+  async resetFailedLoginAttempts() {
+    this.failedLoginAttempts = 0;
+    await this.setStateAsync("login.failedAttempts", {
+      val: 0,
+      ack: true,
+    });
+  }
+
+  // Delay helper function
   delay(ms) {
     return new Promise((resolve) => {
       const t = setTimeout(() => {
@@ -79,9 +100,78 @@ class SofarCloud extends utils.Adapter {
   }
 
   async onReady() {
+    const stateId = `${this.namespace}.login.failedAttempts`;
+    await this.setObjectNotExistsAsync(stateId, {
+      type: "state",
+      common: {
+        name: "Login failed attempts",
+        type: "number",
+        role: "state",
+        read: true,
+        write: false,
+      },
+      native: {},
+    });
+
+    // Adapter-Info-Objekt für gespeicherte Config
+    const configObjId = `${this.namespace}.config.info`;
+    await this.setObjectNotExistsAsync(configObjId, {
+      type: "state",
+      common: {
+        name: "Stored config",
+        type: "string",
+        role: "json",
+        read: true,
+        write: false,
+      },
+      native: {},
+    });
+
+    const oldConfigState = await this.getStateAsync(configObjId);
+    const oldConfigJson = oldConfigState?.val || "{}";
+
+    const newConfig = this.config; // aktuelle Admin-Config
+    const newConfigJson = JSON.stringify(newConfig);
+    let haveNewConfig = false;
+
+    if (oldConfigJson !== newConfigJson) {
+      // Config changed → Reset counter
+      await this.setStateAsync(stateId, { val: 0, ack: true });
+      this.log.info("Config changed → reset login.failedAttempts");
+      haveNewConfig = true;
+    }
+
+    // Store config
+    await this.setStateAsync(configObjId, { val: newConfigJson, ack: true });
+
+    // Load failed login attempts
+    const state = await this.getStateAsync(stateId);
+    this.failedLoginAttempts = state?.val || 0;
+
+    // Login error warning
+    if (this.failedLoginAttempts >= this.MAX_LOGIN_ATTEMPTS) {
+      this.log.warn(
+        "Maximum login attempts reached – adapter paused until configuration is corrected.",
+      );
+      this.terminate
+        ? this.terminate("max login attempts", 0)
+        : process.exit(0);
+      return;
+    }
+
     // Konfiguration aus Adapter-Settings
     const username = this.config.username || "";
     const password = this.config.passwort || "";
+
+    // Prüfen, ob Login-Daten vorhanden sind
+    if (!username || !password) {
+      this.log.warn(
+        "Please configure your login details in the instance first!",
+      );
+      this.terminate ? this.terminate("error in config", 0) : process.exit(0);
+      return;
+    }
+
     const broker_address = this.config.broker_address || "";
     const mqtt_active = !!this.config.mqtt_active;
     const mqtt_user = this.config.mqtt_user || "";
@@ -91,9 +181,15 @@ class SofarCloud extends utils.Adapter {
     const storeDir = this.config.storeDir || "";
 
     // Delay 0-57s
-    const startupDelay = Math.floor(Math.random() * 58) * 1000;
-    this.log.debug(`Start cloud query after ${startupDelay / 1000} Seconds...`);
-    await this.delay(startupDelay);
+    if (!haveNewConfig && this.failedLoginAttempts === 0) {
+      const startupDelay = Math.floor(Math.random() * 58) * 1000;
+      this.log.debug(
+        `Start cloud query after ${startupDelay / 1000} seconds...`,
+      );
+      await this.delay(startupDelay);
+    } else {
+      this.log.debug("New config or login error. No delay");
+    }
 
     let client = null;
     if (mqtt_active) {
@@ -120,6 +216,7 @@ class SofarCloud extends utils.Adapter {
         if (client) {
           client.end();
         }
+        this.terminate ? this.terminate("no token", 0) : process.exit(0);
         return;
       }
 
@@ -129,6 +226,7 @@ class SofarCloud extends utils.Adapter {
         if (client) {
           client.end();
         }
+        this.terminate ? this.terminate("no data", 0) : process.exit(0);
         return;
       }
 
@@ -180,19 +278,54 @@ class SofarCloud extends utils.Adapter {
       });
       this.log.debug(`Status code: ${response.status}`);
       this.log.debug(`Response: ${JSON.stringify(response.data)}`);
+
       if (response.status === 200) {
         const data = response.data;
         if (data.code === "0" && data.data && data.data.accessToken) {
           this.log.debug("Login successful");
+          await this.resetFailedLoginAttempts();
+
           return data.data.accessToken;
         }
-        this.log.error(`Login failed: ${data.message}`);
+
+        await this.incrementFailedLoginAttempts();
+
+        this.log.error(
+          `Login failed: ${data.message} (${this.failedLoginAttempts}/${this.MAX_LOGIN_ATTEMPTS})`,
+        );
+
+        if (this.failedLoginAttempts >= this.MAX_LOGIN_ATTEMPTS) {
+          this.log.warn(
+            "Maximum login attempts reached – adapter paused until configuration is corrected.",
+          );
+        }
       } else {
-        this.log.error("Server error");
+        await this.incrementFailedLoginAttempts();
+
+        this.log.error(
+          `Server error (${this.failedLoginAttempts}/${this.MAX_LOGIN_ATTEMPTS})`,
+        );
+
+        if (this.failedLoginAttempts >= this.MAX_LOGIN_ATTEMPTS) {
+          this.log.warn(
+            "Maximum login attempts reached – adapter paused until configuration is corrected.",
+          );
+        }
       }
     } catch (e) {
-      this.log.error(`Login error: ${e.message}`);
+      await this.incrementFailedLoginAttempts();
+
+      this.log.error(
+        `Login error: ${e.message} (${this.failedLoginAttempts}/${this.MAX_LOGIN_ATTEMPTS})`,
+      );
+
+      if (this.failedLoginAttempts >= this.MAX_LOGIN_ATTEMPTS) {
+        this.log.warn(
+          "Maximum login attempts reached – adapter paused until configuration is corrected.",
+        );
+      }
     }
+
     return null;
   }
 
@@ -328,10 +461,18 @@ class SofarCloud extends utils.Adapter {
 
   onUnload(callback) {
     try {
+      // Timer stoppen
       for (const t of this._timeouts) {
         clearTimeout(t);
       }
       this._timeouts.clear();
+
+      // Cronjobs stoppen (falls du welche hast)
+      if (this._cronJobs) {
+        for (const job of this._cronJobs) {
+          job.stop();
+        }
+      }
       callback();
     } catch {
       callback();

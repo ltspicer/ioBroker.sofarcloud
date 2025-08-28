@@ -86,7 +86,7 @@
     },
     "platform": "Javascript/Node.js",
     "icon": "sofarcloud.jpg",
-    "enabled": true,
+    "enabled": false,
     "extIcon": "https://raw.githubusercontent.com/ltspicer/ioBroker.sofarcloud/main/admin/sofarcloud.jpg",
     "readme": "https://github.com/ltspicer/ioBroker.sofarcloud/blob/main/README.md",
     "loglevel": "info",
@@ -122,6 +122,14 @@
     "storeJson": false,
     "storeDir": "/home/iobroker"
   },
+  "protectedNative": [
+    "passwort",
+    "mqtt_pass"
+  ],
+  "encryptedNative": [
+    "passwort",
+    "mqtt_pass"
+  ],
   "objects": [],
   "instanceObjects": []
 }
