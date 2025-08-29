@@ -142,7 +142,7 @@ class SofarCloud extends utils.Adapter {
       this.log.warn(
         "Please configure your login details in the instance first!",
       );
-      this.terminate ? this.terminate("error in config", 2) : process.exit(2);
+      this.terminate ? this.terminate("error in config", 0) : process.exit(2);
       return;
     }
 
