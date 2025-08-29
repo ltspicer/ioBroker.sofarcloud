@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "2.0.0",
+    "version": "3.0.0",
     "news": {
+      "3.0.0": {
+        "en": "Check whether configuration has changed\nCleaner termination\nPasswords encrypted\nStop after 3 failed logins",
+        "de": "Überprüfen Sie, ob die Konfiguration geändert wurde\nSaubere Kündigung\nPassworte verschlüsselt\nStop nach 3 fehlgeschlagenen Logins",
+        "ru": "Проверьте, изменилась ли конфигурация\nЧистое прекращение\nПароли зашифрованы\nОстановка после 3 неудачных входов",
+        "pt": "Verificar se a configuração mudou\nTerminação mais limpa\nSenhas criptografadas\nParar após 3 logins falhou",
+        "nl": "Controleren of de configuratie is veranderd\nSchonere beëindiging\nWachtwoorden versleuteld\nStop na 3 mislukte aanmelding",
+        "fr": "Vérifier si la configuration a changé\nTerminaison plus propre\nMot de passe chiffré\nArrêter après 3 connexions ratées",
+        "it": "Controllare se la configurazione è cambiata\nCancellazione\nPassword crittografate\nStop dopo 3 login falliti",
+        "es": "Compruebe si la configuración ha cambiado\nTerminación de limpieza\nContraseñas encriptadas\nPare después de 3 accesos fallidos",
+        "pl": "Sprawdź, czy konfiguracja się zmieniła\nZakończenie czystszego\nHasła zaszyfrowane\nZatrzymaj po 3 nieudanych logach",
+        "uk": "Перевірка зміни конфігурації\nПрискорення очищення\nЗашифровані паролі\nСтоп після 3 не вдалося увійти",
+        "zh-cn": "检查配置是否改变\n清洁终止\n加密密码\n三次登录失败后停止"
+      },
       "2.0.0": {
         "en": "Type & Role set more precisely",
         "de": "Type & Role Set genauer",
