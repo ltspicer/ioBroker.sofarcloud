@@ -113,10 +113,12 @@
   },
   "native": {
     "username": "",
+    "passwort": "",
     "mqtt_active": false,
     "broker_address": "127.0.0.1",
     "mqtt_port": 1883,
     "mqtt_user": "",
+    "mqtt_pass": "",
     "storeJson": false,
     "storeDir": "/home/iobroker"
   },

@@ -142,16 +142,17 @@ class SofarCloud extends utils.Adapter {
       this.log.warn(
         "Please configure your login details in the instance first!",
       );
-      this.terminate ? this.terminate("error in config", 0) : process.exit(0);
+      this.terminate ? this.terminate("error in config", 2) : process.exit(2);
       return;
     }
 
-    // Einfache Checksumme aus username + password erstellen
+    // Checksumme aus username + password erstellen
     function calculateChecksum(username, password) {
-      return [...(username + password)].reduce(
-        (sum, char) => sum + char.charCodeAt(0),
+      const sum = [...(username + password)].reduce(
+        (acc, char, index) => acc + char.charCodeAt(0) * (index + 1),
         0,
       );
+      return sum.toString(16).toUpperCase();
     }
 
     const checksum = calculateChecksum(username, password);
@@ -184,8 +185,8 @@ class SofarCloud extends utils.Adapter {
         "Maximum login attempts reached – adapter paused until configuration is corrected.",
       );
       this.terminate
-        ? this.terminate("max login attempts", 0)
-        : process.exit(0);
+        ? this.terminate("max login attempts", 2)
+        : process.exit(2);
       return;
     }
 
@@ -218,8 +219,8 @@ class SofarCloud extends utils.Adapter {
           "MQTT IP address is empty - please check instance configuration",
         );
         this.terminate
-          ? this.terminate("MQTT IP address is empty", 0)
-          : process.exit(0);
+          ? this.terminate("MQTT IP address is empty", 2)
+          : process.exit(2);
         return;
       }
       client = mqtt.connect(`mqtt://${broker_address}:${mqtt_port}`, {
@@ -236,7 +237,7 @@ class SofarCloud extends utils.Adapter {
         if (client) {
           client.end();
         }
-        this.terminate ? this.terminate("no token", 0) : process.exit(0);
+        this.terminate ? this.terminate("no token", 2) : process.exit(2);
         return;
       }
 
@@ -246,7 +247,7 @@ class SofarCloud extends utils.Adapter {
         if (client) {
           client.end();
         }
-        this.terminate ? this.terminate("no data", 0) : process.exit(0);
+        this.terminate ? this.terminate("no data", 1) : process.exit(1);
         return;
       }
 
