@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "news": {
+      "3.0.1": {
+        "en": "Normalize values before write",
+        "de": "Normalisieren Sie Werte vor dem Schreiben",
+        "ru": "Нормализовать значения перед написанием",
+        "pt": "Normalizar os valores antes de escrever",
+        "nl": "Waarden normaliseren voor schrijven",
+        "fr": "Normaliser les valeurs avant d'écrire",
+        "it": "Normalizzare i valori prima di scrivere",
+        "es": "Normalizar los valores antes de escribir",
+        "pl": "Normalizacja wartości przed zapisem",
+        "uk": "Нормалізація значень до запису",
+        "zh-cn": "写入前规范值"
+      },
       "3.0.0": {
         "en": "Check whether configuration has changed\nCleaner termination\nPasswords encrypted\nStop after 3 failed logins",
         "de": "Überprüfen Sie, ob die Konfiguration geändert wurde\nSaubere Kündigung\nPassworte verschlüsselt\nStop nach 3 fehlgeschlagenen Logins",
