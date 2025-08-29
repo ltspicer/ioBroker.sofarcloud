@@ -122,19 +122,11 @@
   },
   "protectedNative": [
     "passwort",
-    ""
+    "mqtt_pass"
   ],
   "encryptedNative": [
     "passwort",
-    ""
-  ],
-  "protectedNative": [
-    "mqtt_pass",
-    ""
-  ],
-  "encryptedNative": [
-    "mqtt_pass",
-    ""
+    "mqtt_pass"
   ],
   "objects": [],
   "instanceObjects": []
