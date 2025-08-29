@@ -26,6 +26,14 @@ The received data can also be saved as JSON (sofar_realtime.json).
 
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- Check whether configuration has changed
+- Cleaner termination
+- Passwords encrypted
+- Stop after 3 failed logins
+
 ### 2.0.0 (2025-08-27)
 
 - Type & Role set more precisely
