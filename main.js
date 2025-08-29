@@ -16,44 +16,63 @@ function name2id(pName) {
 function getRole(data, key) {
   let roleType = null;
   let typus = typeof data;
+
+  // Typen anpassen / normalisieren
   switch (typeof data) {
     case "number":
+      roleType = "value";
+      break;
+
     case "bigint":
-      {
-        roleType = "value";
-      }
+      roleType = "value";
+      // BigInt → String, weil ioBroker kein BigInt unterstützt
+      data = data.toString();
+      typus = "string";
       break;
+
     case "boolean":
-      {
-        roleType = "indicator";
-      }
+      roleType = "indicator";
       break;
+
     case "string":
-      {
+      roleType = "text";
+      data = data.trim();
+      break;
+
+    case "object":
+      if (data === null) {
+        roleType = null;
+        typus = "null";
+      } else {
         roleType = "text";
+        typus = "string";
+        data = JSON.stringify(data);
       }
       break;
-    case "symbol":
+
     case "undefined":
-    case "object":
     case "function":
-      {
-        roleType = null;
-      }
+    case "symbol":
+      roleType = null;
+      typus = "string";
+      data = String(data);
       break;
   }
 
+  // Key-spezifische Anpassungen
   if (!isNaN(data)) {
     roleType = "value";
     typus = "number";
+    data = Number(data);
   }
 
   if (key.endsWith("Flag") || key.endsWith("IsNull")) {
     roleType = "indicator";
     typus = "boolean";
+    data = Boolean(data);
   }
 
-  return [roleType, typus];
+  return [roleType, typus, data];
 }
 
 // ensure checker sees clearTimeout usage
@@ -421,9 +440,8 @@ class SofarCloud extends utils.Adapter {
       // Einheit suchen, falls vorhanden
       const unitKey = `${key}Unit`;
       const unit = station[unitKey] || "";
-
       const id = `${channelId}.${key}`;
-      const [roleType, typus] = getRole(value, key);
+      const [roleType, typus, normalizedValue] = getRole(value, key);
       await this.setObjectNotExistsAsync(id, {
         type: "state",
         common: {
@@ -440,7 +458,7 @@ class SofarCloud extends utils.Adapter {
       //  `${key} role=${getRole(value, key)} typeof=${typeof value} type=${typus}`,
       //);
 
-      await this.setStateAsync(id, { val: value, ack: true });
+      await this.setStateAsync(id, { val: normalizedValue, ack: true });
     }
   }
 
