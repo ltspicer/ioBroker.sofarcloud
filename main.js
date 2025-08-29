@@ -73,19 +73,37 @@ class SofarCloud extends utils.Adapter {
   }
 
   async incrementFailedLoginAttempts() {
-    this.failedLoginAttempts++;
-    await this.setStateAsync("login.failedAttempts", {
-      val: this.failedLoginAttempts,
-      ack: true,
-    });
+    const stateId = `${this.namespace}.adapterInternalData`;
+    const state = await this.getStateAsync(stateId);
+    let data;
+
+    if (state && state.val) {
+      data = JSON.parse(state.val);
+    } else {
+      data = { checksum: 0, failedAttempts: 0 };
+    }
+
+    data.failedAttempts++;
+    this.failedLoginAttempts = data.failedAttempts;
+
+    await this.setStateAsync(stateId, { val: JSON.stringify(data), ack: true });
   }
 
   async resetFailedLoginAttempts() {
+    const stateId = `${this.namespace}.adapterInternalData`;
+    const state = await this.getStateAsync(stateId);
+    let data;
+
+    if (state && state.val) {
+      data = JSON.parse(state.val);
+    } else {
+      data = { checksum: 0, failedAttempts: 0 };
+    }
+
+    data.failedAttempts = 0;
     this.failedLoginAttempts = 0;
-    await this.setStateAsync("login.failedAttempts", {
-      val: 0,
-      ack: true,
-    });
+
+    await this.setStateAsync(stateId, { val: JSON.stringify(data), ack: true });
   }
 
   // Delay helper function
@@ -100,25 +118,13 @@ class SofarCloud extends utils.Adapter {
   }
 
   async onReady() {
-    const stateId = `${this.namespace}.login.failedAttempts`;
+    const stateId = `${this.namespace}.adapterInternalData`;
+
+    // DP erstellen, falls noch nicht vorhanden
     await this.setObjectNotExistsAsync(stateId, {
       type: "state",
       common: {
-        name: "Login failed attempts",
-        type: "number",
-        role: "state",
-        read: true,
-        write: false,
-      },
-      native: {},
-    });
-
-    // Adapter-Info-Objekt für gespeicherte Config
-    const configObjId = `${this.namespace}.config.info`;
-    await this.setObjectNotExistsAsync(configObjId, {
-      type: "state",
-      common: {
-        name: "Stored config",
+        name: "Adapter internal data",
         type: "string",
         role: "json",
         read: true,
@@ -126,38 +132,6 @@ class SofarCloud extends utils.Adapter {
       },
       native: {},
     });
-
-    const oldConfigState = await this.getStateAsync(configObjId);
-    const oldConfigJson = oldConfigState?.val || "{}";
-
-    const newConfig = this.config; // aktuelle Admin-Config
-    const newConfigJson = JSON.stringify(newConfig);
-    let haveNewConfig = false;
-
-    if (oldConfigJson !== newConfigJson) {
-      // Config changed → Reset counter
-      await this.setStateAsync(stateId, { val: 0, ack: true });
-      this.log.info("Config changed → reset login.failedAttempts");
-      haveNewConfig = true;
-    }
-
-    // Store config
-    await this.setStateAsync(configObjId, { val: newConfigJson, ack: true });
-
-    // Load failed login attempts
-    const state = await this.getStateAsync(stateId);
-    this.failedLoginAttempts = state?.val || 0;
-
-    // Login error warning
-    if (this.failedLoginAttempts >= this.MAX_LOGIN_ATTEMPTS) {
-      this.log.warn(
-        "Maximum login attempts reached – adapter paused until configuration is corrected.",
-      );
-      this.terminate
-        ? this.terminate("max login attempts", 0)
-        : process.exit(0);
-      return;
-    }
 
     // Konfiguration aus Adapter-Settings
     const username = this.config.username || "";
@@ -171,6 +145,52 @@ class SofarCloud extends utils.Adapter {
       this.terminate ? this.terminate("error in config", 0) : process.exit(0);
       return;
     }
+
+    // Einfache Checksumme aus username + password erstellen
+    function calculateChecksum(username, password) {
+      return [...(username + password)].reduce(
+        (sum, char) => sum + char.charCodeAt(0),
+        0,
+      );
+    }
+
+    const checksum = calculateChecksum(username, password);
+
+    // Lade bisherige Daten
+    const state = await this.getStateAsync(stateId);
+    let data;
+    if (state && state.val) {
+      data = JSON.parse(state.val);
+    } else {
+      data = { checksum: 0, failedAttempts: 0 };
+    }
+
+    let haveNewConfig = false;
+
+    // Prüfe, ob sich username/password geändert haben
+    if (data.checksum !== checksum) {
+      data.failedAttempts = 0; // Reset counter
+      this.log.info("Username/password changed → reset failedAttempts");
+      data.checksum = checksum;
+      haveNewConfig = true;
+    }
+
+    // Setze aktuelle Werte
+    this.failedLoginAttempts = data.failedAttempts;
+
+    // Login error warning
+    if (this.failedLoginAttempts >= this.MAX_LOGIN_ATTEMPTS) {
+      this.log.warn(
+        "Maximum login attempts reached – adapter paused until configuration is corrected.",
+      );
+      this.terminate
+        ? this.terminate("max login attempts", 0)
+        : process.exit(0);
+      return;
+    }
+
+    // Speichere alles zurück in den DP
+    await this.setStateAsync(stateId, { val: JSON.stringify(data), ack: true });
 
     const broker_address = this.config.broker_address || "";
     const mqtt_active = !!this.config.mqtt_active;
@@ -291,7 +311,7 @@ class SofarCloud extends utils.Adapter {
         await this.incrementFailedLoginAttempts();
 
         this.log.error(
-          `Login failed: ${data.message} (${this.failedLoginAttempts}/${this.MAX_LOGIN_ATTEMPTS})`,
+          `Login failed: ${data.message} (Attempt ${this.failedLoginAttempts}/${this.MAX_LOGIN_ATTEMPTS})`,
         );
 
         if (this.failedLoginAttempts >= this.MAX_LOGIN_ATTEMPTS) {
