@@ -1,12 +1,12 @@
 {
     "sofarcloud adapter settings": "Настройки адаптера для sofarcloud",
-    "username": "SofarCloud username (email)",
-    "passwort": "SofarCloud password",
-    "mqtt_active": "Use MQTT",
-    "broker_address": "MQTT broker IP address",
-    "mqtt_user": "MQTT user",
-    "mqtt_pass": "MQTT password",
-    "mqtt_port": "MQTT port",
-    "storeJson": "Save Json",
-    "storeDir": "Folder for Json file"
+    "username": "Sofarcloud username (электронная почта)",
+    "passwort": "Пароль sofarcloud",
+    "mqtt_active": "Используйте MQTT",
+    "broker_address": "IP -адрес брокера MQTT",
+    "mqtt_user": "Пользователь MQTT",
+    "mqtt_pass": "MQTT пароль",
+    "mqtt_port": "Порт MQTT",
+    "storeJson": "Спасите Json",
+    "storeDir": "Папка для файла json"
 }

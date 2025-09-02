@@ -1,12 +1,12 @@
 {
-    "sofarcloud adapter settings": "sofarcloud的适配器设置",
-    "username": "SofarCloud username (email)",
-    "passwort": "SofarCloud password",
-    "mqtt_active": "Use MQTT",
-    "broker_address": "MQTT broker IP address",
-    "mqtt_user": "MQTT user",
-    "mqtt_pass": "MQTT password",
-    "mqtt_port": "MQTT port",
-    "storeJson": "Save Json",
-    "storeDir": "Folder for Json file"
+    "sofarcloud adapter settings": "Sofarcloud的适配器设置",
+    "username": "sofarcloud用户名（电子邮件）",
+    "passwort": "sofarcloud密码",
+    "mqtt_active": "使用MQTT",
+    "broker_address": "MQTT代理IP地址",
+    "mqtt_user": "MQTT用户",
+    "mqtt_pass": "MQTT密码",
+    "mqtt_port": "MQTT端口",
+    "storeJson": "保存JSON",
+    "storeDir": "JSON文件的文件夹"
 }
