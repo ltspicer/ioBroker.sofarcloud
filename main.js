@@ -152,6 +152,8 @@ class SofarCloud extends utils.Adapter {
       native: {},
     });
 
+    await this.createDataReceivedDP();
+
     // Konfiguration aus Adapter-Settings
     const username = this.config.username || "";
     const password = this.config.passwort || "";
@@ -252,6 +254,7 @@ class SofarCloud extends utils.Adapter {
     try {
       const token = await this.loginSofarCloud(username, password);
       if (!token) {
+        await this.setDataReceivedFalse();
         this.log.error("No token received");
         if (client) {
           client.end();
@@ -262,6 +265,7 @@ class SofarCloud extends utils.Adapter {
 
       const daten = await this.getSofarStationData(token);
       if (!daten) {
+        await this.setDataReceivedFalse();
         this.log.error("No data received");
         if (client) {
           client.end();
@@ -289,6 +293,7 @@ class SofarCloud extends utils.Adapter {
       }
     } catch (err) {
       this.log.error(`Error in the process: ${err.message}`);
+      await this.setDataReceivedFalse();
     } finally {
       this.terminate
         ? this.terminate(
@@ -460,6 +465,28 @@ class SofarCloud extends utils.Adapter {
 
       await this.setStateAsync(id, { val: normalizedValue, ack: true });
     }
+
+    // Set DataReceived to true
+    await this.setStateAsync("DataReceived", { val: true, ack: true });
+  }
+
+  async createDataReceivedDP() {
+    await this.setObjectNotExistsAsync("DataReceived", {
+      type: "state",
+      common: {
+        name: "DataReceived",
+        type: "boolean",
+        role: "indicator",
+        read: true,
+        write: true,
+      },
+      native: {},
+    });
+  }
+
+  // Set DataReceived to false
+  async setDataReceivedFalse() {
+    await this.setStateAsync("DataReceived", { val: false, ack: true });
   }
 
   // MQTT Publish
