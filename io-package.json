@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.0.1",
+    "version": "3.1.0",
     "news": {
+      "3.1.0": {
+        "en": "DataReceived flag added",
+        "de": "Datenempfangsflag hinzugefügt",
+        "ru": "Добавлен флаг DataReceived.",
+        "pt": "Flag DataReceived adicionada",
+        "nl": "DataReceived-vlag toegevoegd",
+        "fr": "Drapeau DataReceived ajouté",
+        "it": "Flag DataReceived aggiunto",
+        "es": "Bandera DataReceived agregada",
+        "pl": "Dodano flagę DataReceived",
+        "uk": "Додано прапор DataReceived",
+        "zh-cn": "新增DataReceived标志"
+      },
       "3.0.1": {
         "en": "Normalize values before write",
         "de": "Normalisieren Sie Werte vor dem Schreiben",

@@ -26,6 +26,10 @@ The received data can also be saved as JSON (sofar_realtime.json).
 
 
 ## Changelog
+### 3.1.0 (2025-09-14)
+
+- DataReceived flag added
+
 ### 3.0.1 (2025-08-29)
 
 - Normalize values before write
