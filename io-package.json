@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.1.0",
+    "version": "3.2.0",
     "news": {
+      "3.2.0": {
+        "en": "More login info. No increment login attemps if server error",
+        "de": "Mehr Anmeldeinformationen. Keine Inkrementierung von Anmeldeversuchen bei Serverfehler",
+        "ru": "Больше информации для входа. Не увеличивать количество попыток входа в случае ошибки сервера.",
+        "pt": "Mais informações de login. Não incrementar tentativas de login em caso de erro do servidor.",
+        "nl": "Meer inloggegevens. Geen verhoging van het aantal inlogpogingen bij serverfouten",
+        "fr": "Plus d'informations de connexion. Pas d'incrémentation des tentatives de connexion en cas d'erreur du serveur",
+        "it": "Maggiori informazioni di login. Non incrementare i tentativi di login in caso di errore del server",
+        "es": "Más información de inicio de sesión. No incrementar intentos de inicio de sesión si hay un error en el servidor",
+        "pl": "Więcej informacji logowania. Brak zwiększania liczby prób logowania w przypadku błędu serwera",
+        "uk": "Більше інформації для входу. Не збільшувати кількість спроб входу в разі помилки серверу.",
+        "zh-cn": "更多登录信息。如果服务器出错，则不会增加登录尝试次数。"
+      },
       "3.1.0": {
         "en": "DataReceived flag added",
         "de": "Datenempfangsflag hinzugefügt",

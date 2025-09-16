@@ -26,8 +26,7 @@ The received data can also be saved as JSON (sofar_realtime.json).
 
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 3.2.0 (2025-09-16)
 
 - More login info. No increment login attemps if server error
 
