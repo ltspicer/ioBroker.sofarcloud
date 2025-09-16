@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.2.0",
+    "version": "3.2.1",
     "news": {
+      "3.2.1": {
+        "en": "Increment failed login attempts only if username or password is wrong",
+        "de": "Erhöhe die Anzahl der fehlgeschlagenen Anmeldeversuche nur dann, wenn Benutzername oder Passwort falsch sind.",
+        "ru": "Увеличивать количество неудачных попыток входа только в случае неправильного имени пользователя или пароля",
+        "pt": "Aumentar tentativas de login falhadas apenas se o nome de usuário ou a senha estiverem incorretos",
+        "nl": "Verhoog het aantal mislukte aanmeldpogingen alleen als de gebruikersnaam of het wachtwoord fout is",
+        "fr": "Incrémenter les tentatives de connexion échouées uniquement si le nom d'utilisateur ou le mot de passe est incorrect.",
+        "it": "Incrementa i tentativi di accesso falliti solo se il nome utente o la password sono sbagliati.",
+        "es": "Incrementar los intentos fallidos de inicio de sesión solo si el nombre de usuario o la contraseña son incorrectos.",
+        "pl": "Zwiększ liczbę nieudanych prób logowania tylko w przypadku błędnego nazwy użytkownika lub hasła.",
+        "uk": "Збільшувати кількість невдаліх спроб входу лише у випадку, якщо неправильний введений логін або пароль.",
+        "zh-cn": "仅当用户名或密码错误时，才增加登录失败尝试次数。"
+      },
       "3.2.0": {
         "en": "More login info. No increment login attemps if server error",
         "de": "Mehr Anmeldeinformationen. Keine Inkrementierung von Anmeldeversuchen bei Serverfehler",
@@ -80,19 +93,6 @@
         "pl": "Dodano opóźnienie 0- 57s",
         "uk": "Додано Delay 0-57s",
         "zh-cn": "延迟 0-57s 添加"
-      },
-      "1.0.1": {
-        "en": "Div dependencies",
-        "de": "Diverse Abhängigkeiten",
-        "ru": "Div зависимости",
-        "pt": "Dependências de Div",
-        "nl": "Afhankelijkheden",
-        "fr": "Dépendances",
-        "it": "Div dipendenze",
-        "es": "Dependencias de Div",
-        "pl": "Zależności div",
-        "uk": "Дивні залежності",
-        "zh-cn": "Div 依赖关系"
       }
     },
     "titleLang": {
