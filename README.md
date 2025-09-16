@@ -26,6 +26,11 @@ The received data can also be saved as JSON (sofar_realtime.json).
 
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- More login info. No increment login attemps if server error
+
 ### 3.1.0 (2025-09-14)
 
 - DataReceived flag added
