@@ -327,7 +327,7 @@ class SofarCloud extends utils.Adapter {
       if (response.status === 200) {
         const data = response.data;
         if (data.code === "0" && data.data && data.data.accessToken) {
-          this.log.debug("Login successful");
+          this.log.debug(`Login successful. Code: ${data.code}`);
           await this.resetFailedLoginAttempts();
 
           return data.data.accessToken;
@@ -335,9 +335,19 @@ class SofarCloud extends utils.Adapter {
 
         await this.incrementFailedLoginAttempts();
 
+        const code = response.data.code;
+
         this.log.error(
-          `Login failed: ${data.message} (Attempt ${this.failedLoginAttempts}/${this.MAX_LOGIN_ATTEMPTS})`,
+          `Login failed: ${data.message} (Attempt ${this.failedLoginAttempts}/${this.MAX_LOGIN_ATTEMPTS}. Code: ${code})`,
         );
+
+        if (code === "101021") {
+          this.log.error("Wrong username");
+        }
+
+        if (code === "666666") {
+          this.log.error("Wrong password");
+        }
 
         if (this.failedLoginAttempts >= this.MAX_LOGIN_ATTEMPTS) {
           this.log.warn(
@@ -345,30 +355,14 @@ class SofarCloud extends utils.Adapter {
           );
         }
       } else {
-        await this.incrementFailedLoginAttempts();
-
         this.log.error(
           `Server error (${this.failedLoginAttempts}/${this.MAX_LOGIN_ATTEMPTS})`,
         );
-
-        if (this.failedLoginAttempts >= this.MAX_LOGIN_ATTEMPTS) {
-          this.log.warn(
-            "Maximum login attempts reached – adapter paused until configuration is corrected.",
-          );
-        }
       }
     } catch (e) {
-      await this.incrementFailedLoginAttempts();
-
       this.log.error(
         `Login error: ${e.message} (${this.failedLoginAttempts}/${this.MAX_LOGIN_ATTEMPTS})`,
       );
-
-      if (this.failedLoginAttempts >= this.MAX_LOGIN_ATTEMPTS) {
-        this.log.warn(
-          "Maximum login attempts reached – adapter paused until configuration is corrected.",
-        );
-      }
     }
 
     return null;
