@@ -333,21 +333,21 @@ class SofarCloud extends utils.Adapter {
           return data.data.accessToken;
         }
 
-        await this.incrementFailedLoginAttempts();
-
         const code = response.data.code;
-
-        this.log.error(
-          `Login failed: ${data.message} (Attempt ${this.failedLoginAttempts}/${this.MAX_LOGIN_ATTEMPTS}. Code: ${code})`,
-        );
 
         if (code === "101021") {
           this.log.error("Wrong username");
+          await this.incrementFailedLoginAttempts();
         }
 
         if (code === "666666") {
           this.log.error("Wrong password");
+          await this.incrementFailedLoginAttempts();
         }
+
+        this.log.error(
+          `Login failed: ${data.message} (Attempt ${this.failedLoginAttempts}/${this.MAX_LOGIN_ATTEMPTS}. Code: ${code})`,
+        );
 
         if (this.failedLoginAttempts >= this.MAX_LOGIN_ATTEMPTS) {
           this.log.warn(
