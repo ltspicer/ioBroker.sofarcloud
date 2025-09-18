@@ -32,7 +32,7 @@ The received data can also be saved as JSON (sofar_realtime.json).
 
 ### 3.2.0 (2025-09-16)
 
-- More login info. No increment login attemps if server error
+- More login info. No increment failed login attempts if server error
 
 ### 3.1.0 (2025-09-14)
 
