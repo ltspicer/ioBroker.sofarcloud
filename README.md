@@ -26,6 +26,11 @@ The received data can also be saved as JSON (sofar_realtime.json).
 
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- Typos corrected
+
 ### 3.2.1 (2025-09-16)
 
 - Increment failed login attempts only if username or password is wrong
