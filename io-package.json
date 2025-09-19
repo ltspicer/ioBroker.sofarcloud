@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.2.1",
+    "version": "3.2.2",
     "news": {
+      "3.2.2": {
+        "en": "Typos corrected",
+        "de": "Rechtschreibfehler korrigiert",
+        "ru": "Опечатки исправлены",
+        "pt": "Erros de digitação corrigidos",
+        "nl": "Typo's gecorrigeerd",
+        "fr": "Coquilles corrigées",
+        "it": "Errori di battitura corretti",
+        "es": "Errores corregidos",
+        "pl": "Poprawiono błędy ortograficzne",
+        "uk": "Виправлені помилки",
+        "zh-cn": "更正了拼写错误"
+      },
       "3.2.1": {
         "en": "Increment failed login attempts only if username or password is wrong",
         "de": "Erhöhe die Anzahl der fehlgeschlagenen Anmeldeversuche nur dann, wenn Benutzername oder Passwort falsch sind.",
@@ -80,19 +93,6 @@
         "pl": "Type & Role zestaw bardziej precyzyjny",
         "uk": "Тип та роль встановлюються більш точно",
         "zh-cn": "类型和角色设置更精确( L)"
-      },
-      "1.0.2": {
-        "en": "Delay 0-57s added",
-        "de": "Verzögerung 0-57s hinzugefügt",
-        "ru": "Добавлена задержка 0-57",
-        "pt": "Atraso 0-57s adicionado",
-        "nl": "Vertraging 0-57s toegevoegd",
-        "fr": "Délai 0-57s ajoutés",
-        "it": "Ritardo 0-57s aggiunto",
-        "es": "Demora 0-57s añadidos",
-        "pl": "Dodano opóźnienie 0- 57s",
-        "uk": "Додано Delay 0-57s",
-        "zh-cn": "延迟 0-57s 添加"
       }
     },
     "titleLang": {
