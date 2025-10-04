@@ -26,6 +26,11 @@ The received data can also be saved as JSON (sofar_realtime.json).
 
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- Security issue (my email address)
+
 ### 3.2.2 (2025-09-19)
 
 - Typos corrected
