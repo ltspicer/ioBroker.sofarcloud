@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.2.2",
+    "version": "3.2.3",
     "news": {
+      "3.2.3": {
+        "en": "Security issue (my email address)",
+        "de": "Sicherheitsproblem (meine E-Mail-Adresse)",
+        "ru": "Вопрос безопасности (мой адрес электронной почты)",
+        "pt": "Problema de segurança (meu endereço de e-mail)",
+        "nl": "Beveiligingsprobleem (mijn e-mailadres)",
+        "fr": "Problème de sécurité (mon adresse courriel)",
+        "it": "Emissione di sicurezza (il mio indirizzo email)",
+        "es": "Cuestión de seguridad (mi dirección de correo electrónico)",
+        "pl": "Kwestia bezpieczeństwa (mój adres e-mail)",
+        "uk": "Питання безпеки (інформація електронної пошти)",
+        "zh-cn": "安全问题(我的电子邮件地址)"
+      },
       "3.2.2": {
         "en": "Typos corrected",
         "de": "Rechtschreibfehler korrigiert",
@@ -80,19 +93,6 @@
         "pl": "Sprawdź, czy konfiguracja się zmieniła\nZakończenie czystszego\nHasła zaszyfrowane\nZatrzymaj po 3 nieudanych logach",
         "uk": "Перевірка зміни конфігурації\nПрискорення очищення\nЗашифровані паролі\nСтоп після 3 не вдалося увійти",
         "zh-cn": "检查配置是否改变\n清洁终止\n加密密码\n三次登录失败后停止"
-      },
-      "2.0.0": {
-        "en": "Type & Role set more precisely",
-        "de": "Type & Role Set genauer",
-        "ru": "Тип и роль устанавливаются более точно",
-        "pt": "Tipo & conjunto de funções mais precisamente",
-        "nl": "Type & rol nauwkeuriger instellen",
-        "fr": "Type & Rôle défini plus précisément",
-        "it": "Set Type & Role più precisamente",
-        "es": "Tipo & Role set más precisamente",
-        "pl": "Type & Role zestaw bardziej precyzyjny",
-        "uk": "Тип та роль встановлюються більш точно",
-        "zh-cn": "类型和角色设置更精确( L)"
       }
     },
     "titleLang": {
