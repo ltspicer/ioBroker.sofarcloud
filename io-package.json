@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.2.3",
+    "version": "3.2.4",
     "news": {
+      "3.2.4": {
+        "en": "package.json edited",
+        "de": "paket.json bearbeitet",
+        "ru": "package.json скачать",
+        "pt": "pacote.json editado",
+        "nl": "package.json bewerkt",
+        "fr": "paquet.json édité",
+        "it": "pacchetto.json modificato",
+        "es": "package.json editado",
+        "pl": "package.json edytowany",
+        "uk": "пакет.json edited",
+        "zh-cn": "package.json 编辑"
+      },
       "3.2.3": {
         "en": "Security issue (my email address)",
         "de": "Sicherheitsproblem (meine E-Mail-Adresse)",
@@ -80,19 +93,6 @@
         "pl": "Normalizacja wartości przed zapisem",
         "uk": "Нормалізація значень до запису",
         "zh-cn": "写入前规范值"
-      },
-      "3.0.0": {
-        "en": "Check whether configuration has changed\nCleaner termination\nPasswords encrypted\nStop after 3 failed logins",
-        "de": "Überprüfen Sie, ob die Konfiguration geändert wurde\nSaubere Kündigung\nPassworte verschlüsselt\nStop nach 3 fehlgeschlagenen Logins",
-        "ru": "Проверьте, изменилась ли конфигурация\nЧистое прекращение\nПароли зашифрованы\nОстановка после 3 неудачных входов",
-        "pt": "Verificar se a configuração mudou\nTerminação mais limpa\nSenhas criptografadas\nParar após 3 logins falhou",
-        "nl": "Controleren of de configuratie is veranderd\nSchonere beëindiging\nWachtwoorden versleuteld\nStop na 3 mislukte aanmelding",
-        "fr": "Vérifier si la configuration a changé\nTerminaison plus propre\nMot de passe chiffré\nArrêter après 3 connexions ratées",
-        "it": "Controllare se la configurazione è cambiata\nCancellazione\nPassword crittografate\nStop dopo 3 login falliti",
-        "es": "Compruebe si la configuración ha cambiado\nTerminación de limpieza\nContraseñas encriptadas\nPare después de 3 accesos fallidos",
-        "pl": "Sprawdź, czy konfiguracja się zmieniła\nZakończenie czystszego\nHasła zaszyfrowane\nZatrzymaj po 3 nieudanych logach",
-        "uk": "Перевірка зміни конфігурації\nПрискорення очищення\nЗашифровані паролі\nСтоп після 3 не вдалося увійти",
-        "zh-cn": "检查配置是否改变\n清洁终止\n加密密码\n三次登录失败后停止"
       }
     },
     "titleLang": {
