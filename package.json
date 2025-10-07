@@ -4,7 +4,7 @@
   "description": "Reads data from the SofarCloud server",
   "author": {
     "name": "Daniel Luginbühl",
-    "email": "dlu0@sunrise.ch"
+    "email": "webmaster@ltspiceusers.ch"
   },
   "homepage": "https://github.com/ltspicer/ioBroker.sofarcloud",
   "license": "MIT",
