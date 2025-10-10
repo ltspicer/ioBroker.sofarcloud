@@ -393,7 +393,7 @@ class SofarCloud extends utils.Adapter {
         { pageNum: 1, pageSize: 10 },
         { headers },
       );
-      this.log.debug("Station list loaded");
+      this.log.debug("Load station list...");
       const stations = resp.data.data.rows;
       const allRealtime = [];
       for (const station of stations) {
