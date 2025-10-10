@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.2.4",
+    "version": "3.2.5",
     "news": {
+      "3.2.5": {
+        "en": "Added query to check whether valid station ID is available",
+        "de": "Zusätzliche Abfrage, ob eine gültige Stations-ID verfügbar ist",
+        "ru": "Добавлен запрос для проверки наличия действительного идентификатора станции",
+        "pt": "Pesquisa adicionada para verificar se o ID da estação está disponível",
+        "nl": "Toegevoegde vraag om te controleren of een geldig station ID beschikbaar is",
+        "fr": "Ajout d'une requête pour vérifier si l'ID de station valide est disponible",
+        "it": "Aggiunto query per verificare se valida stazione ID è disponibile",
+        "es": "Consulta adicional para comprobar si el ID de estación válida está disponible",
+        "pl": "Dodano zapytanie, aby sprawdzić, czy dostępny jest identyfikator stacji",
+        "uk": "Додано запит, щоб перевірити, чи доступний ідентифікатор станції",
+        "zh-cn": "添加查询以检查是否有有效的站名"
+      },
       "3.2.4": {
         "en": "package.json edited",
         "de": "paket.json bearbeitet",
@@ -80,19 +93,6 @@
         "pl": "Dodano flagę DataReceived",
         "uk": "Додано прапор DataReceived",
         "zh-cn": "新增DataReceived标志"
-      },
-      "3.0.1": {
-        "en": "Normalize values before write",
-        "de": "Normalisieren Sie Werte vor dem Schreiben",
-        "ru": "Нормализовать значения перед написанием",
-        "pt": "Normalizar os valores antes de escrever",
-        "nl": "Waarden normaliseren voor schrijven",
-        "fr": "Normaliser les valeurs avant d'écrire",
-        "it": "Normalizzare i valori prima di scrivere",
-        "es": "Normalizar los valores antes de escribir",
-        "pl": "Normalizacja wartości przed zapisem",
-        "uk": "Нормалізація значень до запису",
-        "zh-cn": "写入前规范值"
       }
     },
     "titleLang": {
