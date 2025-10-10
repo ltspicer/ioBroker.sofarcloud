@@ -398,6 +398,13 @@ class SofarCloud extends utils.Adapter {
       const allRealtime = [];
       for (const station of stations) {
         const station_id = name2id(station.id);
+
+        // Prüfen, ob station_id zu kurz ist
+        if (!station_id || station_id.length < 18) {
+          this.log.info(`Station with invalid ID (${station_id}) skipped.`);
+          continue;
+        }
+
         const url_detail = `${URL}device/stationInfo/selectStationDetail?stationId=${station_id}`;
         const resp_detail = await axios.post(url_detail, {}, { headers });
         if (
@@ -408,6 +415,13 @@ class SofarCloud extends utils.Adapter {
           allRealtime.push(resp_detail.data.data.stationRealTimeVo);
         }
       }
+
+      // Wenn keine gültigen Stationen gefunden wurden
+      if (allRealtime.length === 0) {
+        this.log.warn("No valid station found.");
+        return null;
+      }
+
       return allRealtime;
     } catch (e) {
       this.log.error(`Error retrieving stations: ${e.message}`);
