@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.2.6",
+    "version": "3.2.7",
     "news": {
+      "3.2.7": {
+        "en": "\"Invalid station ID\" message as warning instead of info\n\"Start cloud query after...\" as info instead of debug",
+        "de": "\"Invalid station ID\" Meldung als Warnung statt Info\n\"Start Cloud-Abfrage nach...\" als Info statt Debug",
+        "ru": "Сообщение «Недействительный идентификатор станции» в качестве предупреждения вместо информации\n«Начать облачный запрос после...» как информация вместо отладки",
+        "pt": "Mensagem \"Invalid station ID\" como aviso em vez de informação\n\"Iniciar consulta na nuvem após...\" como informação em vez de depuração",
+        "nl": "\"Invalid station ID\" bericht als waarschuwing in plaats van info\n\"Begin cloudquery na...\" als info in plaats van debuggen",
+        "fr": "Message \"Invalid station ID\" comme avertissement au lieu d'info\n\"Démarrer la requête cloud après...\" comme info au lieu de débogage",
+        "it": "\"ID stazione non valida\" messaggio come avvertimento invece di info\n\"Start cloud query after...\" come info invece di debug",
+        "es": "\"Invalid station ID\" mensaje como advertencia en lugar de información\n\"Iniciar la consulta de la nube después...\" como información en lugar de depurar",
+        "pl": "Komunikat \"Nieprawidłowy identyfikator stacji\" jako ostrzeżenie zamiast informacji\n\"Start cloud query after\"... jako info zamiast debug",
+        "uk": "Повідомлення про внесення змін до деяких відомостей про станцію\n\"Зірка хмари після...\" як інформація замість debug",
+        "zh-cn": "\"无效站ID\"信息作为警告而不是信息\n作为信息而不是调试"
+      },
       "3.2.6": {
         "en": "station_id.length < 9 instead 18\ndelay up to 177s",
         "de": "station_id.length < 9 statt 18\nverzögerung bis 177",
@@ -80,19 +93,6 @@
         "pl": "Zwiększ liczbę nieudanych prób logowania tylko w przypadku błędnego nazwy użytkownika lub hasła.",
         "uk": "Збільшувати кількість невдаліх спроб входу лише у випадку, якщо неправильний введений логін або пароль.",
         "zh-cn": "仅当用户名或密码错误时，才增加登录失败尝试次数。"
-      },
-      "3.2.0": {
-        "en": "More login info. No increment login attemps if server error",
-        "de": "Mehr Anmeldeinformationen. Keine Inkrementierung von Anmeldeversuchen bei Serverfehler",
-        "ru": "Больше информации для входа. Не увеличивать количество попыток входа в случае ошибки сервера.",
-        "pt": "Mais informações de login. Não incrementar tentativas de login em caso de erro do servidor.",
-        "nl": "Meer inloggegevens. Geen verhoging van het aantal inlogpogingen bij serverfouten",
-        "fr": "Plus d'informations de connexion. Pas d'incrémentation des tentatives de connexion en cas d'erreur du serveur",
-        "it": "Maggiori informazioni di login. Non incrementare i tentativi di login in caso di errore del server",
-        "es": "Más información de inicio de sesión. No incrementar intentos de inicio de sesión si hay un error en el servidor",
-        "pl": "Więcej informacji logowania. Brak zwiększania liczby prób logowania w przypadku błędu serwera",
-        "uk": "Більше інформації для входу. Не збільшувати кількість спроб входу в разі помилки серверу.",
-        "zh-cn": "更多登录信息。如果服务器出错，则不会增加登录尝试次数。"
       }
     },
     "titleLang": {
