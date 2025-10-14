@@ -401,7 +401,7 @@ class SofarCloud extends utils.Adapter {
 
         // Prüfen, ob station_id zu kurz ist
         if (!station_id || station_id.length < 9) {
-          this.log.info(`Station with invalid ID (${station_id}) skipped.`);
+          this.log.warn(`Station with invalid ID (${station_id}) skipped.`);
           continue;
         }
 
