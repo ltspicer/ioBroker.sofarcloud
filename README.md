@@ -26,8 +26,7 @@ The received data can also be saved as JSON (sofar_realtime.json).
 
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 3.2.6 (2025-10-14)
 
 - station_id.length < 9 instead 18
 - delay up to 177s

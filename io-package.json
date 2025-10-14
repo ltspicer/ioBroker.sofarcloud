@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.2.5",
+    "version": "3.2.6",
     "news": {
+      "3.2.6": {
+        "en": "station_id.length < 9 instead 18\ndelay up to 177s",
+        "de": "station_id.length < 9 statt 18\nverzögerung bis 177",
+        "ru": "station_id.length < 9 вместо 18\nзадержка до 177",
+        "pt": "station_id.length < 9 em vez disso 18\natraso até 177s",
+        "nl": "station_id.lengte < 9 in plaats van 18\nvertraging tot 177s",
+        "fr": "station_id. longueur < 9 au lieu de 18\nretard jusqu'à 177s",
+        "it": "station_id.length < 9 invece 18\nritardo fino a 177",
+        "es": "station_id.length\nretraso hasta 177",
+        "pl": "station _ id.length < 9 zamiast 18\nopóźnienie do 177s",
+        "uk": "станція_id. довжина < 9 замість 18\nзатримка до 177s",
+        "zh-cn": "长度 < 9 改为 18\n延迟最多177次"
+      },
       "3.2.5": {
         "en": "Added query to check whether valid station ID is available",
         "de": "Zusätzliche Abfrage, ob eine gültige Stations-ID verfügbar ist",
@@ -80,19 +93,6 @@
         "pl": "Więcej informacji logowania. Brak zwiększania liczby prób logowania w przypadku błędu serwera",
         "uk": "Більше інформації для входу. Не збільшувати кількість спроб входу в разі помилки серверу.",
         "zh-cn": "更多登录信息。如果服务器出错，则不会增加登录尝试次数。"
-      },
-      "3.1.0": {
-        "en": "DataReceived flag added",
-        "de": "Datenempfangsflag hinzugefügt",
-        "ru": "Добавлен флаг DataReceived.",
-        "pt": "Flag DataReceived adicionada",
-        "nl": "DataReceived-vlag toegevoegd",
-        "fr": "Drapeau DataReceived ajouté",
-        "it": "Flag DataReceived aggiunto",
-        "es": "Bandera DataReceived agregada",
-        "pl": "Dodano flagę DataReceived",
-        "uk": "Додано прапор DataReceived",
-        "zh-cn": "新增DataReceived标志"
       }
     },
     "titleLang": {
