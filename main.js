@@ -225,7 +225,7 @@ class SofarCloud extends utils.Adapter {
     // Delay 0-177s
     if (!haveNewConfig && this.failedLoginAttempts === 0) {
       const startupDelay = Math.floor(Math.random() * 178) * 1000;
-      this.log.debug(
+      this.log.info(
         `Start cloud query after ${startupDelay / 1000} seconds...`,
       );
       await this.delay(startupDelay);
