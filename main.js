@@ -222,9 +222,9 @@ class SofarCloud extends utils.Adapter {
     const storeJson = !!this.config.storeJson;
     const storeDir = this.config.storeDir || "";
 
-    // Delay 0-57s
+    // Delay 0-177s
     if (!haveNewConfig && this.failedLoginAttempts === 0) {
-      const startupDelay = Math.floor(Math.random() * 58) * 1000;
+      const startupDelay = Math.floor(Math.random() * 178) * 1000;
       this.log.debug(
         `Start cloud query after ${startupDelay / 1000} seconds...`,
       );
