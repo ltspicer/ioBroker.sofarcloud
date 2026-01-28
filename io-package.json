@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.2.7",
+    "version": "3.3.0",
     "news": {
+      "3.3.0": {
+        "en": "Better Admin menu",
+        "de": "Besseres Admin Menü",
+        "ru": "Лучшее меню администратора",
+        "pt": "Melhor menu de administração",
+        "nl": "Beter Admin menu",
+        "fr": "Meilleur menu Admin",
+        "it": "Menu migliore di amministrazione",
+        "es": "Mejor menú de Admin",
+        "pl": "Lepsze menu admin",
+        "uk": "Меню адміністратора",
+        "zh-cn": "更好的管理菜单"
+      },
       "3.2.7": {
         "en": "\"Invalid station ID\" message as warning instead of info\n\"Start cloud query after...\" as info instead of debug",
         "de": "\"Invalid station ID\" Meldung als Warnung statt Info\n\"Start Cloud-Abfrage nach...\" als Info statt Debug",
@@ -80,19 +93,6 @@
         "pl": "Poprawiono błędy ortograficzne",
         "uk": "Виправлені помилки",
         "zh-cn": "更正了拼写错误"
-      },
-      "3.2.1": {
-        "en": "Increment failed login attempts only if username or password is wrong",
-        "de": "Erhöhe die Anzahl der fehlgeschlagenen Anmeldeversuche nur dann, wenn Benutzername oder Passwort falsch sind.",
-        "ru": "Увеличивать количество неудачных попыток входа только в случае неправильного имени пользователя или пароля",
-        "pt": "Aumentar tentativas de login falhadas apenas se o nome de usuário ou a senha estiverem incorretos",
-        "nl": "Verhoog het aantal mislukte aanmeldpogingen alleen als de gebruikersnaam of het wachtwoord fout is",
-        "fr": "Incrémenter les tentatives de connexion échouées uniquement si le nom d'utilisateur ou le mot de passe est incorrect.",
-        "it": "Incrementa i tentativi di accesso falliti solo se il nome utente o la password sono sbagliati.",
-        "es": "Incrementar los intentos fallidos de inicio de sesión solo si el nombre de usuario o la contraseña son incorrectos.",
-        "pl": "Zwiększ liczbę nieudanych prób logowania tylko w przypadku błędnego nazwy użytkownika lub hasła.",
-        "uk": "Збільшувати кількість невдаліх спроб входу лише у випадку, якщо неправильний введений логін або пароль.",
-        "zh-cn": "仅当用户名或密码错误时，才增加登录失败尝试次数。"
       }
     },
     "titleLang": {
