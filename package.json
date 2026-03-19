@@ -38,7 +38,7 @@
     "@iobroker/eslint-config": "^2.2.0",
     "@iobroker/testing": "^5.2.2",
     "baseline-browser-mapping": "^2.10.8",
-    "eslint": "^9.39.2"
+    "eslint": "^10.0.3"
   },
   "main": "main.js",
   "files": [
