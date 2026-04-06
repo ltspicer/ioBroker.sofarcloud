@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.3.0",
+    "version": "3.4.0",
     "news": {
+      "3.4.0": {
+        "en": "node > 20",
+        "de": "knoten > 20",
+        "ru": "узел 20",
+        "pt": "nó > 20",
+        "nl": "knooppunt > 20",
+        "fr": "nœud > 20",
+        "it": "> 20",
+        "es": "nodo",
+        "pl": "węzeł > 20",
+        "uk": "вершина > 20",
+        "zh-cn": "节点 > 20"
+      },
       "3.3.0": {
         "en": "Better Admin menu",
         "de": "Besseres Admin Menü",
@@ -80,19 +93,6 @@
         "pl": "Kwestia bezpieczeństwa (mój adres e-mail)",
         "uk": "Питання безпеки (інформація електронної пошти)",
         "zh-cn": "安全问题(我的电子邮件地址)"
-      },
-      "3.2.2": {
-        "en": "Typos corrected",
-        "de": "Rechtschreibfehler korrigiert",
-        "ru": "Опечатки исправлены",
-        "pt": "Erros de digitação corrigidos",
-        "nl": "Typo's gecorrigeerd",
-        "fr": "Coquilles corrigées",
-        "it": "Errori di battitura corretti",
-        "es": "Errores corregidos",
-        "pl": "Poprawiono błędy ortograficzne",
-        "uk": "Виправлені помилки",
-        "zh-cn": "更正了拼写错误"
       }
     },
     "titleLang": {
