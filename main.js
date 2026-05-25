@@ -161,7 +161,7 @@ class SofarCloud extends utils.Adapter {
         // Prüfen, ob Login-Daten vorhanden sind
         if (!username || !password) {
             this.log.warn('Please configure your login details in the instance first!');
-            this.terminate ? this.terminate('error in config', 0) : process.exit(2);
+            this.terminate(2);
             return;
         }
 
@@ -201,7 +201,7 @@ class SofarCloud extends utils.Adapter {
         // Login error warning
         if (this.failedLoginAttempts >= this.MAX_LOGIN_ATTEMPTS) {
             this.log.warn('Maximum login attempts reached – adapter paused until configuration is corrected.');
-            this.terminate ? this.terminate('max login attempts', 2) : process.exit(2);
+            this.terminate(2);
             return;
         }
 
@@ -229,7 +229,7 @@ class SofarCloud extends utils.Adapter {
         if (mqtt_active) {
             if (!broker_address || broker_address === '0.0.0.0') {
                 this.log.error('MQTT IP address is empty - please check instance configuration');
-                this.terminate ? this.terminate('MQTT IP address is empty', 2) : process.exit(2);
+                this.terminate(2);
                 return;
             }
             client = mqtt.connect(`mqtt://${broker_address}:${mqtt_port}`, {
@@ -247,7 +247,7 @@ class SofarCloud extends utils.Adapter {
                 if (client) {
                     client.end();
                 }
-                this.terminate ? this.terminate('no token', 2) : process.exit(2);
+                this.terminate(1);
                 return;
             }
 
@@ -258,7 +258,7 @@ class SofarCloud extends utils.Adapter {
                 if (client) {
                     client.end();
                 }
-                this.terminate ? this.terminate('no data', 1) : process.exit(1);
+                this.terminate(1);
                 return;
             }
 
@@ -282,10 +282,10 @@ class SofarCloud extends utils.Adapter {
         } catch (err) {
             this.log.error(`Error in the process: ${err.message}`);
             await this.setDataReceivedFalse();
+            this.terminate(1);
         } finally {
-            this.terminate
-                ? this.terminate('Everything done. Going to terminate till next schedule', 0)
-                : process.exit(0);
+            this.log.info('Everything done. Going to terminate till next schedule');
+            this.terminate(0);
         }
     }
 
