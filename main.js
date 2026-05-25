@@ -161,7 +161,7 @@ class SofarCloud extends utils.Adapter {
         // Prüfen, ob Login-Daten vorhanden sind
         if (!username || !password) {
             this.log.warn('Please configure your login details in the instance first!');
-            this.terminate(2);
+            this.terminate(0);
             return;
         }
 
