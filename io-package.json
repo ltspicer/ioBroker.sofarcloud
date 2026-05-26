@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.4.0",
+    "version": "3.4.1",
     "news": {
+      "3.4.1": {
+        "en": "process.exit() issue resolved",
+        "de": "process.exit() problem behoben",
+        "ru": "решение проблемы process.exit()",
+        "pt": "problema process.exit () resolvido",
+        "nl": "proces.exit() probleem opgelost",
+        "fr": "process.exit() problème résolu",
+        "it": "process.exit() problema risolto",
+        "es": "cuestión resuelta",
+        "pl": "process.exit () problem rozwiązany",
+        "uk": "process.exit() питання вирішується",
+        "zh-cn": "process.exit() 问题得到解决"
+      },
       "3.4.0": {
         "en": "node > 20",
         "de": "knoten > 20",
@@ -80,19 +93,6 @@
         "pl": "package.json edytowany",
         "uk": "пакет.json edited",
         "zh-cn": "package.json 编辑"
-      },
-      "3.2.3": {
-        "en": "Security issue (my email address)",
-        "de": "Sicherheitsproblem (meine E-Mail-Adresse)",
-        "ru": "Вопрос безопасности (мой адрес электронной почты)",
-        "pt": "Problema de segurança (meu endereço de e-mail)",
-        "nl": "Beveiligingsprobleem (mijn e-mailadres)",
-        "fr": "Problème de sécurité (mon adresse courriel)",
-        "it": "Emissione di sicurezza (il mio indirizzo email)",
-        "es": "Cuestión de seguridad (mi dirección de correo electrónico)",
-        "pl": "Kwestia bezpieczeństwa (mój adres e-mail)",
-        "uk": "Питання безпеки (інформація електронної пошти)",
-        "zh-cn": "安全问题(我的电子邮件地址)"
       }
     },
     "titleLang": {
