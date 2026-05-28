@@ -1,0 +1,12 @@
+{
+    "broker_address": "MQTT Broker adres IP",
+    "mqtt_active": "Użyj MQTT",
+    "mqtt_pass": "Hasło MQTT",
+    "mqtt_port": "Port MQTT",
+    "mqtt_user": "Użytkownik MQTT",
+    "passwort": "Hasło sofarcloud",
+    "sofarcloud adapter settings": "Ustawienia adaptera dla Sofarcloud",
+    "storeDir": "Folder dla pliku JSON",
+    "storeJson": "Zapisz JSON",
+    "username": "Sofarcloud Nazwa użytkownika (e -mail)"
+}

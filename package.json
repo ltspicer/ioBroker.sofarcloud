@@ -38,7 +38,10 @@
     "@iobroker/dev-server": "^0.8.0",
     "@iobroker/eslint-config": "^2.3.4",
     "@iobroker/testing": "^5.2.2",
-    "baseline-browser-mapping": "^2.10.29"
+    "baseline-browser-mapping": "^2.10.29",
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^22.0.0",
+    "typescript": "~6.0.3"
   },
   "main": "main.js",
   "files": [
