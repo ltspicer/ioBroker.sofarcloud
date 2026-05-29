@@ -1,12 +1,12 @@
 {
-    "broker_address": "MQTT -makelaar IP -adres",
-    "mqtt_active": "Gebruik MQTT",
-    "mqtt_pass": "MQTT -wachtwoord",
-    "mqtt_port": "MQTT -poort",
-    "mqtt_user": "MQTT -gebruiker",
-    "passwort": "Sofarcloud wachtwoord",
-    "sofarcloud adapter settings": "Adapterinstellingen voor Sofarcloud",
-    "storeDir": "Map voor JSON -bestand",
-    "storeJson": "Bewaar JSON",
-    "username": "Sofarcloud gebruikersnaam (e -mail)"
+    "Adapter settings for sofarcloud": "Adapterinstellingen voor sofarcloud",
+    "Folder for Json file": "Map voor Json-bestand",
+    "MQTT broker IP address": "IP-adres van MQTT-makelaar",
+    "MQTT password": "MQTT-wachtwoord",
+    "MQTT port": "MQTT-poort",
+    "MQTT user": "MQTT-gebruiker",
+    "Save Json": "Bewaar Json",
+    "SofarCloud password": "SofarCloud-wachtwoord",
+    "SofarCloud username (email)": "SofarCloud-gebruikersnaam (e-mail)",
+    "Use MQTT": "Gebruik MQTT"
 }

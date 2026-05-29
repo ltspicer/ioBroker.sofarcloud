@@ -1,12 +1,12 @@
 {
-    "broker_address": "Endereço IP do corretor MQTT",
-    "mqtt_active": "Use MQTT",
-    "mqtt_pass": "Senha MQTT",
-    "mqtt_port": "Porta MQTT",
-    "mqtt_user": "Usuário MQTT",
-    "passwort": "Senha do sofarcloud",
-    "sofarcloud adapter settings": "Configurações do adaptador para sofarcloud",
-    "storeDir": "Pasta para arquivo json",
-    "storeJson": "Salve JSON",
-    "username": "SofarCloud Nome de usuário (email)"
+    "Adapter settings for sofarcloud": "Configurações do adaptador para sofárcloud",
+    "Folder for Json file": "Pasta para arquivo Json",
+    "MQTT broker IP address": "Endereço IP do corretor MQTT",
+    "MQTT password": "Senha MQTT",
+    "MQTT port": "Porta MQTT",
+    "MQTT user": "Usuário MQTT",
+    "Save Json": "Salvar JSON",
+    "SofarCloud password": "Senha do SofarCloud",
+    "SofarCloud username (email)": "Nome de usuário do SofarCloud (e-mail)",
+    "Use MQTT": "Usar MQTT"
 }
