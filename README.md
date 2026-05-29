@@ -26,6 +26,11 @@ The received data can also be saved as JSON (sofar_realtime.json).
 
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- Translation issues resolved
+
 ### 3.4.1 (2026-05-26)
 
 - process.exit() issue resolved
@@ -48,7 +53,10 @@ The received data can also be saved as JSON (sofar_realtime.json).
 - station_id.length < 9 instead 18
 - delay up to 177s
 
-[Older changelogs can be found there](CHANGELOG_OLD.md)## License
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
+## License
+
 MIT License
 
 Copyright (c) 2025-2026 Daniel Luginbühl <webmaster@ltspiceusers.ch>
