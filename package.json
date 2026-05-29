@@ -1,6 +1,6 @@
 {
   "name": "iobroker.sofarcloud",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "description": "Reads data from the SofarCloud server",
   "author": {
     "name": "Daniel Luginbühl",
@@ -38,9 +38,9 @@
     "@iobroker/dev-server": "^0.8.0",
     "@iobroker/eslint-config": "^2.3.4",
     "@iobroker/testing": "^5.2.2",
-    "baseline-browser-mapping": "^2.10.29",
     "@tsconfig/node22": "^22.0.5",
     "@types/node": "^22.0.0",
+    "baseline-browser-mapping": "^2.10.29",
     "typescript": "~6.0.3"
   },
   "main": "main.js",

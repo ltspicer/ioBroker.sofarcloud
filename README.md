@@ -26,8 +26,7 @@ The received data can also be saved as JSON (sofar_realtime.json).
 
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 3.4.2 (2026-05-29)
 
 - Translation issues resolved
 
@@ -48,14 +47,7 @@ The received data can also be saved as JSON (sofar_realtime.json).
 - "Invalid station ID" message as warning instead of info
 - "Start cloud query after..." as info instead of debug
 
-### 3.2.6 (2025-10-14)
-
-- station_id.length < 9 instead 18
-- delay up to 177s
-
-[Older changelogs can be found there](CHANGELOG_OLD.md)
-
-## License
+[Older changelogs can be found there](CHANGELOG_OLD.md)## License
 
 MIT License
 

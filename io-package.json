@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.4.1",
+    "version": "3.4.2",
     "news": {
+      "3.4.2": {
+        "en": "Translation issues resolved",
+        "de": "Übersetzungsprobleme behoben",
+        "ru": "Вопросы перевода решены",
+        "pt": "Questões de tradução resolvidas",
+        "nl": "Vertaalproblemen opgelost",
+        "fr": "Problèmes de traduction résolus",
+        "it": "Problemi di traduzione risolti",
+        "es": "Cuestiones de traducción resueltas",
+        "pl": "Kwestie tłumaczeń rozwiązane",
+        "uk": "Вирішені питання перекладу",
+        "zh-cn": "翻译问题得到解决"
+      },
       "3.4.1": {
         "en": "process.exit() issue resolved",
         "de": "process.exit() problem behoben",
@@ -80,19 +93,6 @@
         "pl": "Dodano zapytanie, aby sprawdzić, czy dostępny jest identyfikator stacji",
         "uk": "Додано запит, щоб перевірити, чи доступний ідентифікатор станції",
         "zh-cn": "添加查询以检查是否有有效的站名"
-      },
-      "3.2.4": {
-        "en": "package.json edited",
-        "de": "paket.json bearbeitet",
-        "ru": "package.json скачать",
-        "pt": "pacote.json editado",
-        "nl": "package.json bewerkt",
-        "fr": "paquet.json édité",
-        "it": "pacchetto.json modificato",
-        "es": "package.json editado",
-        "pl": "package.json edytowany",
-        "uk": "пакет.json edited",
-        "zh-cn": "package.json 编辑"
       }
     },
     "titleLang": {

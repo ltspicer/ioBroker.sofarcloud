@@ -1,4 +1,9 @@
 # Older changes
+## 3.2.6 (2025-10-14)
+
+- station_id.length < 9 instead 18
+- delay up to 177s
+
 ## 3.2.5 (2025-10-10)
 
 - Added query to check whether valid station ID is available
