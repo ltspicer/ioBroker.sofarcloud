@@ -1,11 +1,15 @@
 {
     "Adapter settings for sofarcloud": "Impostazioni dell'adattatore per Sofarcloud",
+    "Folder for JSON file": "Cartella per il file JSON",
     "Folder for Json file": "Cartella per il file JSON",
     "MQTT broker IP address": "Indirizzo IP del broker MQTT",
     "MQTT password": "Password MQTT",
+    "MQTT password. Leave blank for no-auth": "Password MQTT. Lascia vuoto per nessuna autenticazione",
     "MQTT port": "Porta MQTT",
     "MQTT user": "Utente MQTT",
+    "MQTT user. Leave blank for no-auth": "Utente MQTT. Lascia vuoto per nessuna autenticazione",
     "Save Json": "Salva Json",
+    "Save Json file": "Salva il file JSON",
     "SofarCloud password": "Password di SofarCloud",
     "SofarCloud username (email)": "Nome utente SofarCloud (e-mail)",
     "Use MQTT": "Usa MQTT"

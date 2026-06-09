@@ -128,7 +128,7 @@ class SofarCloud extends utils.Adapter {
     // Delay helper function
     delay(ms) {
         return new Promise(resolve => {
-            const t = setTimeout(() => {
+            const t = this.setTimeout(() => {
                 this._timeouts.delete(t);
                 resolve();
             }, ms);

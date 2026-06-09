@@ -8,5 +8,9 @@
     "Adapter settings for sofarcloud": "Adapter settings for sofarcloud",
     "Folder for Json file": "Folder for Json file",
     "Save Json": "Save Json",
-    "SofarCloud username (email)": "SofarCloud username (email)"
+    "SofarCloud username (email)": "SofarCloud username (email)",
+    "MQTT password. Leave blank for no-auth": "MQTT password. Leave blank for no-auth",
+    "MQTT user. Leave blank for no-auth": "MQTT user. Leave blank for no-auth",
+    "Folder for JSON file": "Folder for JSON file",
+    "Save Json file": "Save Json file"
 }

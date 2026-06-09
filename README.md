@@ -47,7 +47,9 @@ The received data can also be saved as JSON (sofar_realtime.json).
 - "Invalid station ID" message as warning instead of info
 - "Start cloud query after..." as info instead of debug
 
-[Older changelogs can be found there](CHANGELOG_OLD.md)## License
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
+## License
 
 MIT License
 
