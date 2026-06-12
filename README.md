@@ -26,6 +26,11 @@ The received data can also be saved as JSON (sofar_realtime.json).
 
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- changed setTimeout to this.setTimeout
+
 ### 3.4.2 (2026-05-29)
 
 - Translation issues resolved
