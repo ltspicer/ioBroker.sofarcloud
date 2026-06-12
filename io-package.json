@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sofarcloud",
-    "version": "3.4.2",
+    "version": "3.4.3",
     "news": {
+      "3.4.3": {
+        "en": "changed setTimeout to this.setTimeout",
+        "de": "Ich habe setTimeout in this.setTimeout geändert.",
+        "ru": "Изменил setTimeout на this.setTimeout",
+        "pt": "Alterei setTimeout para this.setTimeout",
+        "nl": "setTimeout gewijzigd naar this.setTimeout",
+        "fr": "J'ai remplacé setTimeout par this.setTimeout",
+        "it": "ho modificato setTimeout in questo.setTimeout",
+        "es": "Se cambió setTimeout a this.setTimeout",
+        "pl": "zmieniono setTimeout na this.setTimeout",
+        "uk": "змінено setTimeout на this.setTimeout",
+        "zh-cn": "将 setTimeout 改为 this.setTimeout"
+      },
       "3.4.2": {
         "en": "Translation issues resolved",
         "de": "Übersetzungsprobleme behoben",
@@ -80,19 +93,6 @@
         "pl": "station _ id.length < 9 zamiast 18\nopóźnienie do 177s",
         "uk": "станція_id. довжина < 9 замість 18\nзатримка до 177s",
         "zh-cn": "长度 < 9 改为 18\n延迟最多177次"
-      },
-      "3.2.5": {
-        "en": "Added query to check whether valid station ID is available",
-        "de": "Zusätzliche Abfrage, ob eine gültige Stations-ID verfügbar ist",
-        "ru": "Добавлен запрос для проверки наличия действительного идентификатора станции",
-        "pt": "Pesquisa adicionada para verificar se o ID da estação está disponível",
-        "nl": "Toegevoegde vraag om te controleren of een geldig station ID beschikbaar is",
-        "fr": "Ajout d'une requête pour vérifier si l'ID de station valide est disponible",
-        "it": "Aggiunto query per verificare se valida stazione ID è disponibile",
-        "es": "Consulta adicional para comprobar si el ID de estación válida está disponible",
-        "pl": "Dodano zapytanie, aby sprawdzić, czy dostępny jest identyfikator stacji",
-        "uk": "Додано запит, щоб перевірити, чи доступний ідентифікатор станції",
-        "zh-cn": "添加查询以检查是否有有效的站名"
       }
     },
     "titleLang": {

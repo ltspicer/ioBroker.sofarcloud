@@ -26,8 +26,7 @@ The received data can also be saved as JSON (sofar_realtime.json).
 
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 3.4.3 (2026-06-12)
 
 - changed setTimeout to this.setTimeout
 
@@ -46,11 +45,6 @@ The received data can also be saved as JSON (sofar_realtime.json).
 ### 3.3.0 (2026-01-28)
 
 - Better Admin menu
-
-### 3.2.7 (2025-10-14)
-
-- "Invalid station ID" message as warning instead of info
-- "Start cloud query after..." as info instead of debug
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

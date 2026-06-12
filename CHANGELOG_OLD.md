@@ -1,4 +1,9 @@
 # Older changes
+## 3.2.7 (2025-10-14)
+
+- "Invalid station ID" message as warning instead of info
+- "Start cloud query after..." as info instead of debug
+
 ## 3.2.6 (2025-10-14)
 
 - station_id.length < 9 instead 18
