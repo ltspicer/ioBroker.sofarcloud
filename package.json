@@ -66,10 +66,5 @@
   "bugs": {
     "url": "https://github.com/ltspicer/ioBroker.sofarcloud/issues"
   },
-  "readmeFilename": "README.md",
-  "allowScripts": {
-    "esbuild@0.11.23": true,
-    "esbuild@0.25.12": true,
-    "protobufjs@7.6.2": true
-  }
+  "readmeFilename": "README.md"
 }
