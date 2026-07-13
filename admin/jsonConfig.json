@@ -5,6 +5,7 @@
     "username": {
       "type": "text",
       "label": "SofarCloud username (email)",
+      "default": "your@mail.com",
       "newLine": true,
       "xs": 12,
       "sm": 12,
@@ -15,6 +16,7 @@
     "passwort": {
       "type": "text",
       "label": "SofarCloud password",
+      "default": "SofarCloud-Password",
       "xs": 12,
       "sm": 12,
       "md": 6,
