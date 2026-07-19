@@ -8,9 +8,9 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'cron'
+      interval: 'weekly'
       timezone: 'Europe/Berlin'
-      cronjob: '32 2 19 * *'
+      day: 'thursday'
     open-pull-requests-limit: 15
     assignees:
       - 'ltspicer'
@@ -21,13 +21,15 @@ updates:
       - dependency-name: '@types/node'
         update-types:
           - 'version-update:semver-major'
+      - dependency-name: "typescript"
+        versions: [">=7.0.0"]
 
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
-      interval: 'cron'
+      interval: 'weekly'
       timezone: 'Europe/Berlin'
-      cronjob: '32 2 19 * *'
+      day: 'thursday'
     open-pull-requests-limit: 15
     assignees:
       - 'ltspicer'
