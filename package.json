@@ -40,7 +40,7 @@
     "@iobroker/testing": "^6.2.2",
     "@tsconfig/node22": "^22.0.6",
     "@types/node": "^22.20.4",
-    "baseline-browser-mapping": "^2.11.24",
+    "baseline-browser-mapping": "^2.11.25",
     "typescript": "~6.0.3"
   },
   "overrides": {
